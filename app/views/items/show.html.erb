@@ -1,6 +1,6 @@
 <h2><%= @item.title %></h2>
 
-image_tag
+<%= image_tag @item.image.url(:big), class: 'img-show' if @item.image? %>
 
 <h2>Description</h2>
 <%= @item.description %>
