@@ -1,713 +1,54 @@
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (292.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (444.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (284.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (188.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateUsers (20171007172651)
+Migrating to DeviseCreateUsers (20171008073113)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171007172651"]]
-  [1m[35m (150.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171008073113"]]
+  [1m[35m (168.9ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-07 17:27:15.287174"], ["updated_at", "2017-10-07 17:27:15.287174"]]
-  [1m[35m (220.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-08 07:33:41.701992"], ["updated_at", "2017-10-08 07:33:41.701992"]]
+  [1m[35m (240.3ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to AddPasswordDigestToUsers (20171007174645)
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" varchar[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171007174645"]]
-  [1m[35m (246.6ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:06 +0300
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:32 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:33 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:33 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:34 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:34 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:34 +0300
-  
-ActionController::RoutingError (uninitialized constant MycontollerController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:13:59 +0300
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:34:36 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by Rails::WelcomeController#index as HTML
   Rendering /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
-Completed 200 OK in 16ms (Views: 4.0ms)
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 41ms (Views: 20.8ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:14:24 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 500 Internal Server Error in 10581ms
-
-
+Started GET "/users/sing_in" for 127.0.0.1 at 2017-10-08 10:34:51 +0300
   
-ActionView::Template::Error (undefined method `development?' for Rails:Module):
-    33:   </div>
-    34: 
-    35:     <%= yield %>
-    36:   <%= debug(params) if Rails.development? %>
-    37:   </body>
-    38: </html>
-  
-app/views/layouts/application.html.erb:36:in `_app_views_layouts_application_html_erb__2789558151597898866_47160419566740'
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:15:44 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 117ms (Views: 115.8ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:16:07 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 110ms (Views: 109.1ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:54 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 91ms (Views: 89.5ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:55 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 78ms (Views: 76.7ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:56 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 86ms (Views: 84.9ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:56 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 92ms (Views: 90.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:56 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 80ms (Views: 78.3ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:57 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 78ms (Views: 76.6ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:57 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 78ms (Views: 76.3ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:57 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 79ms (Views: 77.4ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:57 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 97ms (Views: 95.5ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:57 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 92ms (Views: 87.8ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:58 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 84ms (Views: 83.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:58 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 84ms (Views: 82.4ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:58 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 90ms (Views: 88.4ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:17:58 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 95ms (Views: 93.9ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:19:43 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 113ms (Views: 106.5ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:19:45 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 80ms (Views: 78.4ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:19:45 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 93ms (Views: 91.4ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 21:19:58 +0300
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (0.4ms)
-Completed 200 OK in 112ms (Views: 111.3ms)
-
-
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:29:16 +0300
-Processing by UsersController#new as HTML
-Completed 500 Internal Server Error in 6ms
-
-
-  
-ArgumentError (Range unspecified. Specify the :in, :within, :maximum, :minimum, or :is option.):
-  
-app/models/user.rb:5:in `<class:User>'
-app/models/user.rb:1:in `<top (required)>'
-app/controllers/users_controller.rb:4:in `new'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:29:43 +0300
-Processing by UsersController#new as HTML
-Completed 500 Internal Server Error in 4ms
-
-
-  
-ArgumentError (Unknown key: :presence. Valid keys are: :on, :if, :unless, :prepend. Perhaps you meant to call `validates` instead of `validate`?):
-  
-app/models/user.rb:6:in `<class:User>'
-app/models/user.rb:1:in `<top (required)>'
-app/controllers/users_controller.rb:4:in `new'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:29:45 +0300
-Processing by UsersController#new as HTML
-Completed 500 Internal Server Error in 3ms
-
-
-  
-ArgumentError (Unknown key: :presence. Valid keys are: :on, :if, :unless, :prepend. Perhaps you meant to call `validates` instead of `validate`?):
-  
-app/models/user.rb:6:in `<class:User>'
-app/models/user.rb:1:in `<top (required)>'
-app/controllers/users_controller.rb:4:in `new'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:29:45 +0300
-Processing by UsersController#new as HTML
-Completed 500 Internal Server Error in 3ms
-
-
-  
-ArgumentError (Unknown key: :presence. Valid keys are: :on, :if, :unless, :prepend. Perhaps you meant to call `validates` instead of `validate`?):
-  
-app/models/user.rb:6:in `<class:User>'
-app/models/user.rb:1:in `<top (required)>'
-app/controllers/users_controller.rb:4:in `new'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:29:57 +0300
-Processing by UsersController#new as HTML
-Completed 500 Internal Server Error in 6ms
-
-
-  
-ArgumentError (Range unspecified. Specify the :in, :within, :maximum, :minimum, or :is option.):
-  
-app/models/user.rb:7:in `<class:User>'
-app/models/user.rb:1:in `<top (required)>'
-app/controllers/users_controller.rb:4:in `new'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:30:08 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 47ms (ActiveRecord: 1.4ms)
-
-
-  
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
-  
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/user/new" for 127.0.0.1 at 2017-10-07 21:30:57 +0300
-  
-ActionController::RoutingError (No route matches [GET] "/user/new"):
+ActionController::RoutingError (No route matches [GET] "/users/sing_in"):
   
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
@@ -736,58 +77,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:31:13 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 13ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_in" for 127.0.0.1 at 2017-10-08 10:35:16 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_in"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -814,58 +108,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:34 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 22ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_in" for 127.0.0.1 at 2017-10-08 10:35:19 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_in"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -892,58 +139,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:35 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 14ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:35:49 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -970,58 +170,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:35 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 21ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:16 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1048,58 +201,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:36 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 15ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:17 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1126,58 +232,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:36 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 15ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:17 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1204,58 +263,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:36 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 17ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:17 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1282,58 +294,12 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:37 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 22ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:42 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1360,58 +326,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:32:37 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 18ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:43 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1438,58 +357,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:02 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 17ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:43 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1516,58 +388,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:03 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 23ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:44 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1594,58 +419,11 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:03 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 19ms (ActiveRecord: 0.0ms)
-
-
+Started GET "/users/sing_up" for 127.0.0.1 at 2017-10-08 10:37:45 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/sing_up"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1672,58 +450,18 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:03 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 18ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:41:44 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3371ms (Views: 3368.7ms)
 
 
+Started GET "/users/new" for 127.0.0.1 at 2017-10-08 10:42:02 +0300
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionController::RoutingError (No route matches [GET] "/users/new"):
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -1750,673 +488,516 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:04 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 19ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:43:17 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 41ms (Views: 40.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-10-08 10:43:20 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (95.3ms)
+Completed 200 OK in 136ms (Views: 115.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:47:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
 
 
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionView::Template::Error (File to import not found or unreadable: bootstrap-sprockets.
+Load paths:
+  /home/roman/test-exercise/app/assets/config
+  /home/roman/test-exercise/app/assets/images
+  /home/roman/test-exercise/app/assets/javascripts
+  /home/roman/test-exercise/app/assets/stylesheets
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionview-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /home/roman/test-exercise/node_modules):
+    4:     <title>Task</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:33:04 +0300
-Processing by UsersController#new as HTML
-Completed 406 Not Acceptable in 20ms (ActiveRecord: 0.0ms)
+app/assets/stylesheets/application.scss:17
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___4123964617631194354_70034410192500'
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:47:03 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
 
 
   
-ActionController::UnknownFormat (UsersController#new is missing a template for this request format and variant.
-
-request.formats: ["text/html"]
-request.variant: []
-
-NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+ActionView::Template::Error (File to import not found or unreadable: bootstrap-sprockets.
+Load paths:
+  /home/roman/test-exercise/app/assets/config
+  /home/roman/test-exercise/app/assets/images
+  /home/roman/test-exercise/app/assets/javascripts
+  /home/roman/test-exercise/app/assets/stylesheets
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionview-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /home/roman/test-exercise/node_modules):
+    4:     <title>Task</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
   
-actionpack (5.1.4) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
-actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
-activesupport (5.1.4) lib/active_support/callbacks.rb:131:in `run_callbacks'
-actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:34:26 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered users/new.html.erb within layouts/application (126.0ms)
-Completed 200 OK in 218ms (Views: 217.2ms | ActiveRecord: 0.0ms)
+app/assets/stylesheets/application.scss:17
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___4123964617631194354_70034244580220'
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:48:38 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 7643ms (Views: 7632.3ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:35:58 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered users/new.html.erb within layouts/application (38.7ms)
-Completed 200 OK in 128ms (Views: 126.3ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-08 10:55:39 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 63ms (Views: 61.5ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:36:19 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered users/new.html.erb within layouts/application (2.7ms)
-Completed 200 OK in 76ms (Views: 75.1ms | ActiveRecord: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-10-08 10:55:45 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 84ms (Views: 64.8ms | ActiveRecord: 1.3ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:08 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.9ms)
-  Rendered users/new.html.erb within layouts/application (5.4ms)
-Completed 200 OK in 80ms (Views: 63.7ms | ActiveRecord: 2.5ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-10-08 10:55:45 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 60ms (Views: 59.1ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:09 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (4.4ms)
-  Rendered users/new.html.erb within layouts/application (5.6ms)
-Completed 200 OK in 75ms (Views: 73.8ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:06:28 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 67ms (Views: 65.4ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:10 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.9ms)
-  Rendered users/new.html.erb within layouts/application (5.7ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-08 11:07:07 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (41.2ms)
+Completed 200 OK in 126ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-10-08 11:08:06 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 78ms (Views: 76.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-08 11:08:28 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3y6LiD1Vc+0+9fkGaFN1q5dithSnoiDnrzGU32WZce73EPmgcVQKwuYr6SAoTGgFkhdS1BPgv+04ol18XkeXMA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (15.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 450ms (Views: 64.4ms | ActiveRecord: 16.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-08 11:08:51 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pEdp0Oua0Qj2bX+yrjzeZQciRB2pFbSfWDAFTHTrJF8C5xp/XEbgumWsIPFmazbX+mgTzkjDP1sDGu+rbGh+tQ==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (83.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$11$tSwpl0CZj3sDKIpI1hrLm.qjLaDOJ601IJFk4Thlgp4z7ydwMQYfG"], ["created_at", "2017-10-08 08:08:51.401527"], ["updated_at", "2017-10-08 08:08:51.401527"]]
+  [1m[35m (266.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 615ms (ActiveRecord: 350.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:08:51 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 55ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-08 11:08:57 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:08:58 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 70ms (Views: 68.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:09:03 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 73ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-08 11:09:06 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:09:06 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 72ms (Views: 70.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:50 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.7ms)
 Completed 200 OK in 74ms (Views: 72.9ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:10 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (6.0ms)
-  Rendered users/new.html.erb within layouts/application (7.2ms)
-Completed 200 OK in 91ms (Views: 89.9ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:10 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.5ms)
-  Rendered users/new.html.erb within layouts/application (3.8ms)
-Completed 200 OK in 83ms (Views: 81.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:41:11 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (6.8ms)
-  Rendered users/new.html.erb within layouts/application (8.0ms)
-Completed 200 OK in 99ms (Views: 97.4ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 21:43:52 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.4ms)
-  Rendered users/new.html.erb within layouts/application (6.6ms)
-Completed 200 OK in 94ms (Views: 93.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/users" for 127.0.0.1 at 2017-10-07 21:43:53 +0300
-Processing by UsersController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Pscm6Rp7J4EaFlz4rywGo31IYp+3UH4G1e3rKYXI3/i5X5OJ54X7wW2DM9LGWAHtKUVor/VXfnvO5TyiJORjiw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:10:53 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"V9cY2Dalq8QHrH3g7pDcoUluCyDKu/zASoDa30TyVrDxd2t3gXmadpRtIqMmxzQTtCRc8yttdwQRqjA4XHEMWg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mUser Exists (30.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
-No template found for UsersController#create, rendering head :no_content
-Completed 204 No Content in 85ms (ActiveRecord: 30.4ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:01 +0300
-  
-ActionController::RoutingError (uninitialized constant UserController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:18 +0300
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActionController::RoutingError (uninitialized constant UserController):
-  
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
-activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
-actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
-rack (2.0.3) lib/rack/etag.rb:25:in `call'
-rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
-rack (2.0.3) lib/rack/head.rb:12:in `call'
-rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
-rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.4) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:54 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (22.8ms)
-  Rendered users/new.html.erb within layouts/application (24.2ms)
-Completed 200 OK in 792ms (Views: 732.6ms | ActiveRecord: 1.4ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:57 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.6ms)
-  Rendered users/new.html.erb within layouts/application (7.1ms)
-Completed 200 OK in 111ms (Views: 109.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:57 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.6ms)
-  Rendered users/new.html.erb within layouts/application (7.4ms)
-Completed 200 OK in 93ms (Views: 91.7ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:58 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.4ms)
-  Rendered users/new.html.erb within layouts/application (9.5ms)
-Completed 200 OK in 130ms (Views: 128.7ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 21:47:58 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.6ms)
-  Rendered users/new.html.erb within layouts/application (4.8ms)
-Completed 200 OK in 76ms (Views: 74.6ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:31 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eg6MYT5ADYJInWkX4ntbmrHUhYJWe2lVgPEunDMoAxT9ljkBw77Rwj8IBj2LD1zU5dmPshR8aSib+fkXkgS/Zw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.0ms)
-  Rendered users/new.html.erb within layouts/application (5.3ms)
-Completed 200 OK in 62ms (Views: 60.4ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:32 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rN8ZbHYjw3Kjoy9jPWzWw1vh/FEJal+vpxtt+6ubn8crR6wMi90fMtQ2QElUGNGND+z2YUttX9K8E7pwCrcjtA==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.2ms)
-  Rendered users/new.html.erb within layouts/application (5.7ms)
-Completed 200 OK in 91ms (Views: 90.0ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:32 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GR3LiFd5UiL0/s6akmEwWTBtwxSJ5qUiDIJqgRnpDmeehX7oqoeOYoNrobD7FTcXZGDJJMvhpV8Xir0KuMWyFA==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.5ms)
-  Rendered users/new.html.erb within layouts/application (3.8ms)
-Completed 200 OK in 74ms (Views: 72.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:33 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M2KNPi90K5XhOsUvyVwITwuVu1sqhLFGQz6UPZTPx/K0+jhe0or31ZavqgWgKA8BX5ixa2iDsTtYNkO2NeN7gQ==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.6ms)
-  Rendered users/new.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 94ms (Views: 92.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:33 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9apY1+jfqwC2DL5m4V4lBEkwq/4jJWzttAtycexYkqhyMu23FSF3QMGZ0UyIKiJKHT2hzmEibJCvA6X6TXQu2w==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.9ms)
-  Rendered users/new.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 77ms (Views: 74.9ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:34 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1EtTXlsA2PrzU96SKAW5uQ1hZxqdefAmryUj/vbH2iRT0+Y+pv4EuoTGsbhBcb73WWxtKt9+8Fu0LfR1V+tmVw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.3ms)
-  Rendered users/new.html.erb within layouts/application (4.8ms)
-Completed 200 OK in 61ms (Views: 59.5ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:34 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XpOb55JcdWsQ8K1WduWhvtoQRPTBk0j58zQ4Q5MXbfzZCy6Hb6KpK2dlwnwfkabwjh1OxIOUSIToPO/IMjvRjw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (4.5ms)
-  Rendered users/new.html.erb within layouts/application (6.5ms)
-Completed 200 OK in 68ms (Views: 66.3ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:34 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MTh+h5kqrOcmNgT+cVGsS0A51/RyQ1M0S/8n0sjiGk+2oMvnZNRwp1Gja9QYJasFFDTdxDBEU0lQ9/BZac6mPA==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.9ms)
-  Rendered users/new.html.erb within layouts/application (4.1ms)
-Completed 200 OK in 59ms (Views: 57.6ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:34 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"usB0psy9LqHISiJrupRVRW2t1WfwNJGHgp+fj4MqdKw9WMHGMUPy4b/fTUHT4FILOaDfV7IzkfqZl0gEIgbI3w==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.5ms)
-  Rendered users/new.html.erb within layouts/application (5.2ms)
-Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:38 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EvREzdmh7W+myP7haPBbwnMiq67Vb2LdOwKM++rLCX+VbPGtJF8xL9FdkcsBhFyMJy+hnpdoYqAgCltwS+e1DA==", "user"=>{"name"=>"sa", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.0ms)
-  Rendered users/new.html.erb within layouts/application (7.0ms)
-Completed 200 OK in 77ms (Views: 75.6ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:38 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SFNEbAy6NN5y8ySvnEwL2V99736bCi3LbVgcitBPRUbPy/EM8UTongVmS4X1OAyXC3DlTtkNLbZ2UMsBcWP5NQ==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.0ms)
-  Rendered users/new.html.erb within layouts/application (6.3ms)
-Completed 200 OK in 99ms (Views: 97.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:39 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fSbxxRbQs4CwDAX1lAsxSEtDRgtV0B3u59+r5SBobR/6vkSl6y5vwMeZat/9fzYGH05MOxfXHZP813xugUTRbA==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.6ms)
-  Rendered users/new.html.erb within layouts/application (4.9ms)
-Completed 200 OK in 66ms (Views: 64.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:39 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tu5Kb4lFTeSWvjPiWecRhPBKXMlhZy05BIIm+nrad8Exdv8PdLuRpOErXMgwkxbKpEdW+SNgLUQfivFx2/bLsg==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.1ms)
-  Rendered users/new.html.erb within layouts/application (7.2ms)
-Completed 200 OK in 71ms (Views: 69.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:39 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LgPEpMjuq67fj+9CrIAOlyDYquBEoT9HzChl0iqKQT2pm3HENRB37qgagGjF9AnZdNWg0AamPzrXILJZi6b9Tg==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.9ms)
-  Rendered users/new.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 71ms (Views: 69.4ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:39 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"92ied7YBgTXC9WJuoVXBt5+ogWvIyyPaEXXe3RosIYxw8CsXS/9ddbVgDUTIIcb5y6WLW4rMI6cKfQlWuwCd/w==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.8ms)
-  Rendered users/new.html.erb within layouts/application (4.1ms)
-Completed 200 OK in 92ms (Views: 90.1ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:40 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hT4gTYjDPzvOc6K/ZmRLfTEVILCPX37pmmztB3+O9oYCppUtdT3je7nmzZUPEEwzZRgqgM1YfpSBZDqM3qJK9Q==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.8ms)
-  Rendered users/new.html.erb within layouts/application (4.5ms)
-Completed 200 OK in 86ms (Views: 84.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:40 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cm568zXddZKw7By6/nNdU/og+lcjMbDmVz6ZHKL64kT19s+TyCOp0sd5c5CXB1odri3wZ2E2sJtMNk6XA9ZeNw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.4ms)
-  Rendered users/new.html.erb within layouts/application (5.0ms)
-Completed 200 OK in 86ms (Views: 84.9ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 21:48:40 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OUFYu1S5nQsVNSBNMnNMDhiC3cTJkfmtAeIn+FTIK/a+2e3bqUdBS2KgT2dbB0tATI/X9IuW+dAa6vBz9eSXhQ==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.9ms)
-  Rendered users/new.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 84ms (Views: 82.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-10-07 22:12:55 +0300
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by MycontrollerController#index as HTML
-  Rendering mycontroller/index.html.erb within layouts/application
-  Rendered mycontroller/index.html.erb within layouts/application (1.6ms)
-Completed 200 OK in 636ms (Views: 623.1ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/users/new" for 127.0.0.1 at 2017-10-07 22:13:04 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (63.2ms)
-  Rendered users/new.html.erb within layouts/application (70.2ms)
-Completed 200 OK in 250ms (Views: 178.6ms | ActiveRecord: 1.1ms)
-
-
-Started GET "/singup" for 127.0.0.1 at 2017-10-07 22:13:12 +0300
-Processing by UsersController#new as HTML
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.1ms)
-  Rendered users/new.html.erb within layouts/application (4.7ms)
-Completed 200 OK in 97ms (Views: 95.1ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:13:16 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZH7bM6guRthVhu9IG2r0822JxGULIca+eSNZnrtr5ElaD0nOqBtsReJzn7PUvHNIuAX+EDLC7GHDQ23bwts6ow==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (4.0ms)
-  Rendered users/new.html.erb within layouts/application (6.3ms)
-Completed 200 OK in 71ms (Views: 65.9ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:13:17 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KQ7kLICzSibiDqjCE07vi83SadL89Z8CsJQGbn8dAtsXf3bRgIZgu1X72DncmGgwGF5Tp8UWtd0K9DIrBq3cMQ==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.7ms)
-  Rendered users/new.html.erb within layouts/application (7.6ms)
-Completed 200 OK in 76ms (Views: 75.1ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:13:17 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cpDsVNpExTRTikI5vFsuQPpIg4Ka41M7ocNNPc8UeBVM4X6p2nHvqeR/MsJzjan7L8S596MAeeQbo3l4tqSm/w==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.2ms)
-  Rendered users/new.html.erb within layouts/application (5.3ms)
-Completed 200 OK in 71ms (Views: 67.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:14:13 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GW/bG8YpeRg9dZWESKVl8EI7BgAPZx4OE14Y2837Qf4nHknmxhxThYqA5X+Hc+JLl7c8dTaENNGpPiyetEufFA==", "user"=>{"name"=>"2", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (3.6ms)
-  Rendered users/new.html.erb within layouts/application (6.7ms)
-Completed 200 OK in 84ms (Views: 82.9ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:14:14 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hIzOLzPRovcfQXwZrmzI9Ucnse93ubgk0CadvKlNOxK6/VzSM+SIaqi0DOJhuk9OkquLmk5akvtqRqn50P3l+A==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (2.9ms)
-  Rendered users/new.html.erb within layouts/application (4.4ms)
-Completed 200 OK in 58ms (Views: 56.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:14:15 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L2b2Boe8NNIXDXME+Cee6KsKFGnAWEzAWowOG+3wkrURF2T7h4keT6D4A/838RlTfoYuHPm7Zh/g7DpelEBMXw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.2ms)
-  Rendered users/new.html.erb within layouts/application (6.8ms)
-Completed 200 OK in 73ms (Views: 70.9ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:16:36 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1NqsnbrkcNV/dXfYiZtTcMmGTKI5IoYGmB97Ey6llcnqqz5gutFaSMiAByNGTdTLHAp21wDBrNkif09WVxVLIw==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (6.7ms)
-  Rendered users/new.html.erb within layouts/application (8.0ms)
-Completed 200 OK in 67ms (Views: 65.3ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:17:14 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3RxGOBs5d1X5fj8eD6Ap/pg3+y68QOZRdIsieIPSLgDjbdTFGwxdyE6LT+XAdq5FTbvBW4WjzI7O6xY9+mLw6g==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.3ms)
-  Rendered users/new.html.erb within layouts/application (7.3ms)
-Completed 200 OK in 148ms (Views: 105.1ms | ActiveRecord: 2.1ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:17:16 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bBkgTccJaMh6QxT3pFJX+dkh0ro8njNaTYNU2omvUqNSaLKwxzxCVc22ZAxrhNBCDK3ozwV9GYX342Cf8B+MSQ==", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.5ms)
-  Rendered users/new.html.erb within layouts/application (7.4ms)
-Completed 200 OK in 129ms (Views: 124.7ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/singup" for 127.0.0.1 at 2017-10-07 22:17:23 +0300
-Processing by UsersController#new as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HgEobe8J4VFpdiuo9IhwfKPJafwA2ONZ4gVH/bKuGwMgcLqQ7zzLzN6DW1M7XvfHdkVTiTk7yYZYZXO4yx7F6Q==", "user"=>{"name"=>"sad", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
-  Rendering users/new.html.erb within layouts/application
-  Rendered shared/_userform.html.erb (5.7ms)
-  Rendered users/new.html.erb within layouts/application (6.9ms)
-Completed 200 OK in 69ms (Views: 67.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 48ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:53 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 57ms (Views: 55.8ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:10:58 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3IZZuqLzemVhKyzf+sa8y/CM7MtJkgMotJWLGhq0TrO/SdZTr5pABnVLrNqJykiweFqCpFe395zCZA1b33quBg=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:58 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 78ms (Views: 71.8ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:10:58 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tBTJsA0Mx/uzXhHUITGDg41rmcCQg4sY9PkJ6fyxfPPX20ZZAGX9mKc+kdFSPXf4Bb33r46mf6yCCI+oOX+cRg=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:58 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 80ms (Views: 78.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:10:59 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RizOirxz5LZ+8NPUck0MQMtrjI1y/dsUrk5Eb3zmIlQl40FjsRre1WqQU9EBQfg7Q73i4mzYL6DYv8IuuSjC4Q=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:59 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 62ms (Views: 61.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:10:59 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CYZ+5SgyOAWUF6WbC37D9k+cbNPYxLQoBsLdrLJR7MtqSfEMJVsCZoB3JZ54cjeNx0oCvMbhQJxwM1vtd58Mfg=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:10:59 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 64ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"w+6I+BaXDxNQjqKW0bwFJuVFybILG006gezvyQeh0gGgIQcRG/41cETuIpOisPFdbZOn3RU+uY73HWmIwm8ytA=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 64ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"96bygsaLwlDGNFHmCVuQmcn6iZs1JRkFEU+D+LP90JSUaX1ry+L4M9JU0eN6V2TiQSzn9CsA7bFnvgW5djMwIQ=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g4aVm5u9SclJTorN8JMTrZS3cv0pFhkfv3GRoANIf/LgSRpyltRzql0uCsiDn+fWHGEckjcz7avJgBfhxoafRw=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:00 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 79ms (Views: 76.2ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3hd98KAAA5QazeyNc980ql9R4+S21NhPjIQglslJ58S92PIZrWk59w6tbIgA08DR14eNi6jxLPv6dabXDIcHcQ=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xmmwME1fV1oQ5tt002Kc1kIZixMv4mmSeJOgJVQZfUKlpj/ZQDZtOQSGW3Ggbmitys/lfDHHnSYOYiZkkded9w=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 62ms (Views: 60.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5EQj8u9oGz8geCmN30X6IDHBUN2oJTXtZCbuId00QreHi6wb4gEhXDQYqYisSQ5buRc+srYAwVkS12hgGPqiAg=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 66ms (Views: 65.2ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YbCI9Y2+mHLdy3YN03k6kEi/NDHJ3rTOX+/DrA+Qnd8CfwccgNeiEcmr9gigdc7rwGlaXtf7QHopHkXtyl59ag=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 64ms (Views: 63.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BxaUl9KtYUkILWQpSUT8A0nHU8iSvq56cBeSlfw15nFk2Rt+38RbKhxN5Cw6SAh4wRE9p4ybWs4G5hTUOfsGxA=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:01 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 63ms (Views: 61.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"EEmueJF/hS7MiRqN9b2q7rcai0SXsr0/AEvXl2iNhmBzhiGRnBa/TdjpmoiGsV6VP8zlK4mXSYt2ulHWrUNm1Q=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 73ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ymCEvpt2yNT7rvzEUORdarun9zHUuWxiID9WooQQ4teprwtXlh/yt+/OfMEj6KkRM3GZXsqcmNZWztDjQd4CYg=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Q9KPRGBEtd3lmagDFmGtQMsU141PZS7UldB6VT0pb7UgHQCtbS2PvvH5KAZlbVk7Q8K54lFA2mDjIfwU+OePAA=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 64ms (Views: 62.8ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"sf0zBh75gK92rCB+G2njD2diyCMU+p2/LlcylR0VuI3SMrzvE5C6zGLMoHtoZRd077SmTArfaQtYprTU2NtYOA=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:02 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 60ms (Views: 58.5ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:03 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cvl/HxkjJzrwIIrt92JOqDaTWkVMqECOum36zxunkw4RNvD2FEodWeRACuiEbrrTvkU0KlKNtDrMnHyO3mlzuw=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:03 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 71ms (Views: 70.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-08 11:11:03 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JpHji0V3PHG9qifGHjMd0O+BPKOkC5uUVh59MC/yARRFXmxiSB4GEqnKp8NtP+mrZ1dSzLoubyAg7/tx6jzhoQ=="}
+Redirected to http://0.0.0.0:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:03 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 72ms (Views: 70.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-08 11:11:05 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 67ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-10-08 11:11:15 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9UnNPjmZcXmmvZvYLa52rR8tIJ3/O5ZKl7ovxfipQS8j2GMjf3uzr2PpyIUeCR0AfJ3LsE/rnb8o7iKBrZjQug==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 257ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 11:11:16 +0300
+Processing by MycontrolController#index as HTML
+  Rendering mycontrol/index.html.erb within layouts/application
+  Rendered mycontrol/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 56ms (Views: 53.6ms | ActiveRecord: 0.0ms)
 
 
