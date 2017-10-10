@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :items
   root "items#index"
 
+  resources :order_items
+
+
   get 'Cart', to: "carts#index"
 
   devise_for :users
