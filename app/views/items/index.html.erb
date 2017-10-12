@@ -1,8 +1,0 @@
-
-<% @items.each do |item| %>
-
-<section>
-  <h2><%= link_to item.title, item_path(item) %> </h2>
-  <%= image_tag item.image.url(:thumb) if item.image? %>
-</section>
-<% end %>
