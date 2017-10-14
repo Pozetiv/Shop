@@ -1615,3 +1615,245 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 61ms (Views: 57.5ms | ActiveRecord: 0.2ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20171014164203)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "price" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171014164203"]]
+  [1m[35m (398.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2017-10-14 21:42:55 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered users/_form.html.erb (66.3ms)
+  Rendered users/new.html.erb within layouts/application (69.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 5577ms (Views: 5541.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:43:09 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (41.5ms)
+  Rendered products/new.html.erb within layouts/application (42.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 117ms (Views: 99.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:43:29 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.6ms)
+  Rendered products/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 84.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:43:58 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1.3ms)
+  Rendered products/new.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/roman/test-exercise/app/views/products/_form.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting ')'
+ext_field :price, class: 'form-control' );@output_buffer.saf
+                              ^
+/home/roman/test-exercise/app/views/products/_form.html.erb:17: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+ :price, class: 'form-control' );@output_buffer.safe_append=
+                              ^
+/home/roman/test-exercise/app/views/products/_form.html.erb:18: syntax error, unexpected '<', expecting ')'
+        </div>
+         ^
+/home/roman/test-exercise/app/views/products/_form.html.erb:21: unknown regexp options - dv
+/home/roman/test-exercise/app/views/products/_form.html.erb:22: syntax error, unexpected '<'
+</div>
+ ^
+/home/roman/test-exercise/app/views/products/_form.html.erb:22: unterminated regexp meets end of file):
+  
+app/views/products/_form.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/products/_form.html.erb:17: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+app/views/products/_form.html.erb:18: syntax error, unexpected '<', expecting ')'
+app/views/products/_form.html.erb:21: unknown regexp options - dv
+app/views/products/_form.html.erb:22: syntax error, unexpected '<'
+app/views/products/_form.html.erb:22: unterminated regexp meets end of file
+app/views/products/new.html.erb:2:in `_app_views_products_new_html_erb___3952736402819624630_69938095355580'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:11 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.7ms)
+  Rendered products/new.html.erb within layouts/application (7.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 77ms (Views: 75.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:13 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.7ms)
+  Rendered products/new.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 74ms (Views: 72.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:13 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.7ms)
+  Rendered products/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 63ms (Views: 61.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:14 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.3ms)
+  Rendered products/new.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 67.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:14 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.9ms)
+  Rendered products/new.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 71ms (Views: 69.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:14 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (6.8ms)
+  Rendered products/new.html.erb within layouts/application (8.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 70.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:14 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.3ms)
+  Rendered products/new.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 70.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:44:14 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.8ms)
+  Rendered products/new.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 75ms (Views: 72.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-14 21:46:37 +0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.9ms)
+  Rendered users/_form.html.erb (16.4ms)
+  Rendered users/new.html.erb within layouts/application (18.2ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 408ms (Views: 371.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-14 21:46:49 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.8ms)
+  Rendered products/new.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 85ms (Views: 58.5ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2017-10-14 21:47:18 +0300
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6SjTEgeqps5VnZdDnQDGaVRsocf64dA4kM/4g2d3bccnDXJk8PcSY1/X37/hd2XfIyaABrGaw6RZDHiHhirD8g==", "product"=>{"title"=>"1 product", "description"=>"this's text", "price"=>"25"}, "commit"=>"Create new product"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `save' for nil:NilClass):
+  
+app/controllers/products_controller.rb:18:in `create'
+Started POST "/products" for 127.0.0.1 at 2017-10-14 21:49:05 +0300
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6SjTEgeqps5VnZdDnQDGaVRsocf64dA4kM/4g2d3bccnDXJk8PcSY1/X37/hd2XfIyaABrGaw6RZDHiHhirD8g==", "product"=>{"title"=>"1 product", "description"=>"this's text", "price"=>"25"}, "commit"=>"Create new product"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "1 product"], ["description", "this's text"], ["price", 25.0], ["created_at", "2017-10-14 18:49:15.403602"], ["updated_at", "2017-10-14 18:49:15.403602"]]
+  [1m[35m (536.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/products/1
+Completed 302 Found in 561ms (ActiveRecord: 537.9ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2017-10-14 21:49:15 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (8.7ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Product:0x007f37302b9300>):
+    1: <h2 class="text-center"><%= @product.name %></h2>
+    2: 
+    3:   <h4>description</h4> </br>
+    4: <%= @product.description %>
+  
+app/views/products/show.html.erb:1:in `_app_views_products_show_html_erb__3832845729101084755_69937504085560'
+Started GET "/products/1" for 127.0.0.1 at 2017-10-14 21:49:54 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 74ms (Views: 71.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2017-10-14 21:50:36 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 60ms (Views: 56.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2017-10-14 21:50:56 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 67.8ms | ActiveRecord: 0.4ms)
+
+

@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/singin', to: 'sessions#new'
   post '/singin', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  resources :products
 end
