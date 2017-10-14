@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'sessions/new'
+  root "users#new"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users
+  get '/singup', to: 'users#new'
+  post '/singup', to: 'users#create'
 
-  root "homes#index"
-
-  get "/user/", to: 'home#user'
-
-  resource :carts, only: [:show]
-  resource :homes, only: [:index]
-  resource :products
-  resource :order_items
- # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/singin', to: 'sessions#new'
+  post '/singin', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 end
