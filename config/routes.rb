@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'my/index'
+  resources :order_items
   get 'sessions/new'
-  root "users#new"
+  root "my#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
   get '/singup', to: 'users#new'
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :products
+ get '/cart', to: 'carts#show'
 end
