@@ -40,8 +40,7 @@
             <li><%= link_to "Sing IN", singin_path %></li>
             <li><%= link_to "Sing UP", singup_path %></li>
             <% end %>
-        <li class="active"><%= link_to "#{current_order.order_items.size} items in the cart
-            with total price #{current_order.subtotal}", cart_path%></li>
+        <li class="active"><%= render 'layouts/cart'%></li>
       </ul>
     </div>
   </div>
@@ -55,7 +54,7 @@
       <div class="alert alert-<%=msg_type %>"><%= msg %></div>
       <% end %>
   <%= yield %>
-  <%= debug(params) if Rails.env.development? %>
+
 
 
 </div>

@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :products
- get '/cart', to: 'carts#show'
+ resource :carts, only: [:show]
 end
