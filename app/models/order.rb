@@ -1,14 +1,16 @@
 class Order < ApplicationRecord
-  has_many :order_items
-  before_save :set_subtotal
+	belongs_to :user
+	has_many :order_items
+	before_save :update_total
 
-  def subtotal
-    order_items.collect {|order_item| order_item.valid? ? (order_item.unit_price*order_item.quantity) : 0}.sum
-  end
+	def calculate_tota
+		self.order_items.collect { |item| item.product.price * item.quantity }.sum	
+	end
 
-  private
+	private
 
-  def set_subtotal
-    self[:subtotal] = subtotal
-  end
+	def update_total
+		self.total_price = calculate_tota
+		
+	end
 end

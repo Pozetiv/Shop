@@ -3,5 +3,13 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :danger
 
   include SessionsHelper
-  include ApplicationHelper
+  helper_method :current_order 
+
+  def current_order
+  	if session[:order_id]
+  		Order.find(session[:order_id])
+  	else
+  		Order.new
+  end
+end
 end

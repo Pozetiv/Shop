@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   before_action :search_product, only: [:edit, :show, :update, :destroy]
 
+  def index
+    @products = Product.all
+    @order_item = current_order.order_items.new
+    
+  end
   def show
     @poruduct = Product.find(params[:id])
   end
