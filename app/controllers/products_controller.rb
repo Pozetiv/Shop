@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-
+    @categories = Category.all
     @order_item = current_order.order_items.new if logged_in?
     
   end
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :image)
+    params.require(:product).permit(:title, :description, :price, :image, :category_id)
   end
 
   def search_product

@@ -21,6 +21,8 @@
           <%=f.file_field :image %>
         </div>
 
+          <%= f.select :category_id, Category.all.pluck(:id, :name) %>
+
         <%= f.submit yield(:button), class: 'btn btn-info' %>
   </div>
 </div>

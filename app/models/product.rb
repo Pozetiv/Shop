@@ -3,6 +3,9 @@ class Product < ApplicationRecord
   #relationship
 	has_many :order_items
 
+  belongs_to :category
+
   #validates
   validates :title, :description, :price, presence: true
+
 end
