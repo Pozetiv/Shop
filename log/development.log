@@ -6501,3 +6501,542 @@ ActionView::Template::Error (First argument in form cannot contain nil or be emp
   
 app/views/products/index.html.erb:23:in `block in _app_views_products_index_html_erb__901972436991378722_69981707966180'
 app/views/products/index.html.erb:20:in `_app_views_products_index_html_erb__901972436991378722_69981707966180'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:16:43 +0300
+  [1m[35m (18.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id", "categories"."name" FROM "categories"[0m
+  Rendered products/_form.html.erb (245.9ms)
+  Rendered products/new.html.erb within layouts/application (248.3ms)
+Completed 500 Internal Server Error in 304ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `[[3, "First course"], [4, "Main course"], [5, "Drinks"]]' for #<Product:0x00555829f637f0>):
+    21:           <%=f.file_field :image %>
+    22:         </div>
+    23: 
+    24:           <%= f.select Category.all.pluck(:id, :name), :category_id  %>
+    25: 
+    26:         <%= f.submit yield(:button), class: 'btn btn-info' %>
+    27:   </div>
+  
+app/views/products/_form.html.erb:24:in `block in _app_views_products__form_html_erb___1870467941314840421_46918567557460'
+app/views/products/_form.html.erb:3:in `_app_views_products__form_html_erb___1870467941314840421_46918567557460'
+app/views/products/new.html.erb:2:in `_app_views_products_new_html_erb__3545443220218366926_46918569086620'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:18:07 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."name" FROM "categories"[0m
+  Rendered products/_form.html.erb (4.8ms)
+  Rendered products/new.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 1126ms (Views: 1123.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2017-10-26 21:18:20 +0300
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4jj398bKa5uhWvlVBsok+b9a86kBDuN097OjghlnhmE/8VvHtznBXdi0RiVQv23aBO4Vs4hZEmNtWepLNOENyA==", "product"=>{"title"=>"s", "description"=>"s", "price"=>"13", "category_id"=>"Main course"}, "commit"=>"Create new product"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering products/new.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."name" FROM "categories"[0m
+  Rendered products/_form.html.erb (4.6ms)
+  Rendered products/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 131ms (Views: 50.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2017-10-26 21:21:38 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (28.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/index.html.erb within layouts/application (80.9ms)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 29.1ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    20: <%@categories.each do |categories| %>
+    21:     <div class="text-center"><h2><%=categories.name %> </h2></div>
+    22:     <div class="col-md-12">
+    23:       <%=form_for @order_item do |f| %>
+    24:     <%categories.products.each do |product|%>
+    25:         <div class="col-md-4">
+    26:           <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %>
+  
+app/views/products/index.html.erb:23:in `block in _app_views_products_index_html_erb___406732122310489066_69902069187500'
+app/views/products/index.html.erb:20:in `_app_views_products_index_html_erb___406732122310489066_69902069187500'
+Started GET "/products" for 127.0.0.1 at 2017-10-26 21:21:40 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/index.html.erb within layouts/application (20.0ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    20: <%@categories.each do |categories| %>
+    21:     <div class="text-center"><h2><%=categories.name %> </h2></div>
+    22:     <div class="col-md-12">
+    23:       <%=form_for @order_item do |f| %>
+    24:     <%categories.products.each do |product|%>
+    25:         <div class="col-md-4">
+    26:           <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %>
+  
+app/views/products/index.html.erb:23:in `block in _app_views_products_index_html_erb___406732122310489066_69902136318420'
+app/views/products/index.html.erb:20:in `_app_views_products_index_html_erb___406732122310489066_69902136318420'
+Started GET "/products" for 127.0.0.1 at 2017-10-26 21:21:57 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/index.html.erb within layouts/application (24.0ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    20: <%@categories.each do |categories| %>
+    21:     <div class="text-center"><h2><%=categories.name %> </h2></div>
+    22:     <div class="col-md-12">
+    23:       <%=form_for @order_item do |f| %>
+    24:     <%categories.products.each do |product|%>
+    25:         <div class="col-md-4">
+    26:           <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %>
+  
+app/views/products/index.html.erb:23:in `block in _app_views_products_index_html_erb___406732122310489066_69902073761300'
+app/views/products/index.html.erb:20:in `_app_views_products_index_html_erb___406732122310489066_69902073761300'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:22:48 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (166.0ms)
+  Rendered products/new.html.erb within layouts/application (167.5ms)
+Completed 500 Internal Server Error in 171ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `select_tag' for #<ActionView::Helpers::FormBuilder:0x007f26c650de78>
+Did you mean?  select):
+    21:           <%=f.file_field :image %>
+    22:         </div>
+    23: 
+    24:           <%= f.select_tag(:category_id, options_for_select(['firste', 4]))  %>
+    25: 
+    26:         <%= f.submit yield(:button), class: 'btn btn-info' %>
+    27:   </div>
+  
+app/views/products/_form.html.erb:24:in `block in _app_views_products__form_html_erb___1870467941314840421_69902256370420'
+app/views/products/_form.html.erb:3:in `_app_views_products__form_html_erb___1870467941314840421_69902256370420'
+app/views/products/new.html.erb:2:in `_app_views_products_new_html_erb__3545443220218366926_69902256398840'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:23:04 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (7.4ms)
+  Rendered products/new.html.erb within layouts/application (9.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 95ms (Views: 93.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:26:10 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.erb (11.9ms)
+  Rendered products/new.html.erb within layouts/application (13.2ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for [["First course", 3], ["Main course", 4], ["Drinks", 5]]:Array):
+    21:           <%=f.file_field :image %>
+    22:         </div>
+    23: 
+    24:           <%= f.select("Category", "category_id", Category.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>
+    25: 
+    26:         <%= f.submit yield(:button), class: 'btn btn-info' %>
+    27:   </div>
+  
+app/views/products/_form.html.erb:24:in `block in _app_views_products__form_html_erb___1870467941314840421_69902305241120'
+app/views/products/_form.html.erb:3:in `_app_views_products__form_html_erb___1870467941314840421_69902305241120'
+app/views/products/new.html.erb:2:in `_app_views_products_new_html_erb__3545443220218366926_69902305175620'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:30:52 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.erb (9.6ms)
+  Rendered products/new.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for [["First course", 3], ["Main course", 4], ["Drinks", 5]]:Array):
+    21:           <%=f.file_field :image %>
+    22:         </div>
+    23: 
+    24:           <%= f.select("Category", "category_id", Category.all.collect {|p| [ p.name, p.id ] }) %>
+    25: 
+    26:         <%= f.submit yield(:button), class: 'btn btn-info' %>
+    27:   </div>
+  
+app/views/products/_form.html.erb:24:in `block in _app_views_products__form_html_erb___1870467941314840421_69902136428720'
+app/views/products/_form.html.erb:3:in `_app_views_products__form_html_erb___1870467941314840421_69902136428720'
+app/views/products/new.html.erb:2:in `_app_views_products_new_html_erb__3545443220218366926_69902136469880'
+Started GET "/products/new" for 127.0.0.1 at 2017-10-26 21:32:02 +0300
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.erb (4.8ms)
+  Rendered products/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 57ms (Views: 54.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2017-10-26 21:32:17 +0300
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrxKfYcC2eGFZCGDOsmdz55pI4OxYwRTG6Ze+Ol1J6tzdeZN9vFzJ/yKnvNsvNTsJd3FmTg09USBTBcxxPOsAg==", "product"=>{"title"=>"1 productss", "description"=>"sda", "price"=>"14", "category_id"=>"4"}, "commit"=>"Create new product"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (51.2ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "1 productss"], ["description", "sda"], ["price", 14.0], ["created_at", "2017-10-26 18:32:17.157900"], ["updated_at", "2017-10-26 18:32:17.157900"], ["category_id", 4]]
+  [1m[35m (341.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/products/9
+Completed 302 Found in 403ms (ActiveRecord: 392.5ms)
+
+
+Started GET "/products/9" for 127.0.0.1 at 2017-10-26 21:32:17 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 54ms (Views: 50.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 21:32:21 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/index.html.erb within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    20: <%@categories.each do |categories| %>
+    21:     <div class="text-center"><h2><%=categories.name %> </h2></div>
+    22:     <div class="col-md-12">
+    23:       <%=form_for @order_item do |f| %>
+    24:     <%categories.products.each do |product|%>
+    25:         <div class="col-md-4">
+    26:           <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %>
+  
+app/views/products/index.html.erb:23:in `block in _app_views_products_index_html_erb___406732122310489066_69902138888580'
+app/views/products/index.html.erb:20:in `_app_views_products_index_html_erb___406732122310489066_69902138888580'
+Started GET "/" for 127.0.0.1 at 2017-10-26 21:54:57 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered products/index.html.erb within layouts/application (2.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 92ms (Views: 88.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/singin" for 127.0.0.1 at 2017-10-26 21:55:04 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (27.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 69ms (Views: 67.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/singin" for 127.0.0.1 at 2017-10-26 21:55:36 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LSC1el9ytZG5IS3BFr4VKPJOqrEDNKA9iCPfphasRCcFP+NrbnLJyvcjEOGwRn1TcJf3y+PIxAhcDxbba6lpHg==", "session"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log IN"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 179ms (Views: 43.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/singin" for 127.0.0.1 at 2017-10-26 21:55:49 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"516M1sVTS3bAwdNMMqgW6utp1CIcfMwv/Z52PIJDeQU6lyDmtKDhsLkvbDxk3V/JUN0yOJUrPThndD/1r8XyrA==", "session"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log IN"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/users/3
+Completed 302 Found in 125ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-26 21:55:49 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 54.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 21:55:51 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <% if logged_in? %>
+    2: <%=form_for @order do |f| %>
+    3:   <%@categories.each do |category| %>
+    4:     <% if category.products.any? %>
+    5:       <div class="text-center">
+  
+app/views/products/index.html.erb:2:in `_app_views_products_index_html_erb___406732122310489066_69902136947920'
+Started GET "/users/3" for 127.0.0.1 at 2017-10-26 22:01:11 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 69ms (Views: 46.6ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-26 22:01:16 +0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xCBY6f1WerhM9TiqGTjb9ASWoHGoKaz7SrOB521RGRcZ6fTZjKXQfjUbh9pPTZLXvyJGayF+XezQWcguQNeSvg=="}
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:01:16 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered products/index.html.erb within layouts/application (3.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 58.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2017-10-26 22:01:19 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 43.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2017-10-26 22:01:21 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (306.3ms)
+  Rendered users/new.html.erb within layouts/application (307.8ms)
+Completed 500 Internal Server Error in 311ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `singup_path' for #<#<Class:0x007f26cc0a75e0>:0x007f26b821ea68>
+Did you mean?  signup_path):
+    1: <div class="row">
+    2:   <div class="col-md-6 col-md-offset-3">
+    3:     <%= form_for(@user, url: singup_path) do |f| %>
+    4:         <%= render 'shared/error_messages' %>
+    5:     <div class="form-group">
+    6:       <%=f.label :name %>
+  
+app/views/users/_form.html.erb:3:in `_app_views_users__form_html_erb___2376728742709153667_69902137307940'
+app/views/users/new.html.erb:2:in `_app_views_users_new_html_erb__2717708668823107147_69902137359540'
+Started GET "/signup" for 127.0.0.1 at 2017-10-26 22:01:55 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered users/_form.html.erb (8.0ms)
+  Rendered users/new.html.erb within layouts/application (9.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 68.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:01:59 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered products/index.html.erb within layouts/application (2.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 59ms (Views: 56.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2017-10-26 22:02:01 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 78ms (Views: 75.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2017-10-26 22:02:28 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 56ms (Views: 54.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:02:33 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered products/index.html.erb within layouts/application (2.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:38:15 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `orders' for nil:NilClass):
+  
+app/controllers/application_controller.rb:12:in `current_order'
+app/controllers/products_controller.rb:8:in `index'
+Started GET "/singin" for 127.0.0.1 at 2017-10-26 22:38:34 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/singin"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/signin" for 127.0.0.1 at 2017-10-26 22:38:42 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 264ms (Views: 262.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2017-10-26 22:38:52 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+x7Ge9p2oh56tc+V345biNETIEbpmeAGg9DHZlgKqi0m12pLq4UI2ANbcOWJ+xKraqfGXGDOEREZOo6vdYwhhA==", "session"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log IN"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/users/3
+Completed 302 Found in 141ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-26 22:38:52 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 44ms (Views: 41.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:38:55 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 2.7ms)
+
+
+  
+NoMethodError (undefined method `order' for #<Order:0x007f26b08a5600>):
+  
+app/controllers/products_controller.rb:8:in `index'
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:41:07 +0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 123ms (ActiveRecord: 3.8ms)
+
+
+  
+NoMethodError (undefined method `order' for #<Order:0x005567037471c8>):
+  
+app/controllers/products_controller.rb:8:in `index'
+Started GET "/" for 127.0.0.1 at 2017-10-26 22:41:11 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `order' for #<Order:0x0055670392f8a0>):
+  
+app/controllers/products_controller.rb:8:in `index'
