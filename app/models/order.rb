@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 	before_save :update_total
 
 	accepts_nested_attributes_for :order_items
-	def calculate_tota
+	def calculate_total
 		self.order_items.collect { |item| item.product.price * item.quantity }.sum	
 	end
 

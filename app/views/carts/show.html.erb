@@ -1,8 +1,26 @@
 <% if @order_items.any?%>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Item price $</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @order_items.each do |item| %>
-<p><%= item.product.title %></p>
-<p>Unit price: <%= item.product.price %></p>
-<% end %>
-    <% else %>
-    You cart is empty!
+  <tr>
+    <td><%=item.product.title %></td>
+    <td><%=item.quantity %></td>
+    <td><%=item.product.price %></td>
+  </tr>
+      <% end %>
+  <td>Total Price: <%= @order.total_price  %>$</td>
+  </tbody>
+</table>
+
+
+
+<% else %>
+You cart is empty!
 <% end %>
