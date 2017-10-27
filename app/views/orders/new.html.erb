@@ -1,0 +1,20 @@
+<% if logged_in? %>
+    <%=form_for @order do |f| %>
+        <%@categories.each do |category| %>
+            <% if category.products.any? %>
+                <div class="text-center">
+                  <h2><%= category.name%></h2>
+                </div>
+
+                <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+                    <div>
+
+                      Product: <%= oi.select :product_id, category.products.pluck(:title, :id) %>
+                      Quantity: <%= oi.number_field :quantity, min: 1, value: 1 %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+        <%= f.submit "Create order" %>
+    <% end %>
+<% end %>
