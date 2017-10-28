@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
   before_action :search_product, only: [:edit, :show, :update, :destroy]
+  before_action :admin, only: [:edit, :new, :destroy]
 
   def index
-    @products = Product.all
+
     @categories = Category.all
   end
 
@@ -36,10 +37,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-    @product.destroy
-    redirect_to root_url
-  end
+
 
 
   private

@@ -11,7 +11,7 @@ class Order < ApplicationRecord
 	private
 
 	def update_total
-		self.total_price = calculate_tota
+		self.total_price = calculate_total
 		
 	end
 end

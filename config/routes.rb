@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  delete 'destroy', to: 'products#destroy'
+
   resources :orders
   resources :products
   resources :order_items
   resource :cart, only: [:show]
+
+
 end

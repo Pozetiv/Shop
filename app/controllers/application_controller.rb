@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
   	else
   		current_user.orders.new
   end
-end
+  end
+
+  def admin
+    if !current_user.admin
+      redirect_to root_path
+      flash[:danger] = "Your ate not admin"
+    end
+    end
 end

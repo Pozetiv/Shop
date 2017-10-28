@@ -1,0 +1,20 @@
+<h2 class="text-center">Users controle menu</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>User name</th>
+    <th>User email</th>
+    <th>User order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+       <td><%=link_to user.name, user_path(user) %> | <%= link_to "edit", edit_user_path(user), class:
+       "btn btn-link"%></td>
+        <td><%=user.email %></td>
+        <td><%=link_to "#{user.name} cart", cart_path(user)%></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
