@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :search_product, only: [:edit, :show, :update, :destroy]
-  before_action :admin, only: [:edit, :new, :destroy]
+  before_action :admin, only: [:edit, :new]
 
   def index
 

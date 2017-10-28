@@ -1,24 +1,8 @@
-# README
+The internet shop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+My shope has got next function
+1. CRUD model's product, user
+2. Separation products by categories
+3. Admin's has got admin-panel-menu
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
     @order.update_attributes(order_params)
     if @order.update_attributes(order_params)
       session[:order_id] = @order.id
+      @order.save
     else
       redirect_to root_path
       flash[:info] = "Opps we have some problems with order"

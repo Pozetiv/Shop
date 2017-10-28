@@ -5,8 +5,9 @@
         <div class="col-md-4">
           <%= image_tag product.image.url(:thumb), class: 'img-thumbnail' if product.image? %>
           <%= link_to product.title, product_path(product) %></br>
-          <%= link_to "Edit", edit_product_path(product), class: "btn btn-info bnt-sm" %>
-
+<% if current_user.admin%>
+        <%= link_to "Edit", edit_product_path(product), class: "btn btn-info bnt-sm" %>
+<% end%>
         </div>
         <% end %>
     </br>

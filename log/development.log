@@ -13757,3 +13757,2380 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 55ms (Views: 52.6ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-28 15:52:37 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 73ms (Views: 69.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2017-10-28 16:08:38 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered products/index.html.erb within layouts/application (8.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 65ms (Views: 62.4ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (created_at IS NOT NULL) GROUP BY strftime('%Y-%m-%d 00:00:00 UTC', created_at) LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (created_at IS NOT NULL) GROUP BY strftime('%Y-%m-%d 00:00:00 UTC', created_at) LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:11:54 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 3.2ms)
+
+
+  
+  [1m[36mCACHE OrderItem Load (0.0ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 11]]
+NoMethodError (undefined method `group_by_date' for #<OrderItem::ActiveRecord_Associations_CollectionProxy:0x007f91c81e9220>
+Did you mean?  group_by):
+  
+app/controllers/carts_controller.rb:4:in `show'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:12:27 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 5.6ms)
+
+
+  
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 11]]
+NoMethodError (undefined method `group_by_date' for #<OrderItem::ActiveRecord_Associations_CollectionProxy:0x005609415807f0>
+Did you mean?  group_by_day
+               group_by_quarter
+               group_by_year
+               group_by_minute
+               group_by_week
+               group_by_month
+               group_by_hour):
+  
+app/controllers/carts_controller.rb:4:in `show'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:14:08 +0300
+  
+SyntaxError (/home/roman/test-exercise/app/controllers/carts_controller.rb:4: syntax error, unexpected '|', expecting ')'
+t_order.order_items.group_by(|item| item.created_at.to_date)
+                              ^
+/home/roman/test-exercise/app/controllers/carts_controller.rb:4: syntax error, unexpected ')', expecting keyword_end
+item| item.created_at.to_date)
+                              ^):
+  
+app/controllers/carts_controller.rb:4: syntax error, unexpected '|', expecting ')'
+app/controllers/carts_controller.rb:4: syntax error, unexpected ')', expecting keyword_end
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:51 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (8.2ms)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 5.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x00560942a79f08>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298886538480'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298886538480'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:53 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x00560942654658>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298884350280'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298884350280'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:53 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x00560941668aa0>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298876309780'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298876309780'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:54 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x005609428c90a0>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298885650920'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298885650920'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:55 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x005609422e7650>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298882610800'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298882610800'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:16:56 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x005609429fa348>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_47298886332140'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_47298886332140'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:17:27 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (122.9ms)
+Completed 200 OK in 783ms (Views: 698.6ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:18:22 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 4.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Array:0x007feca9354d58>):
+    10:   <tbody>
+    11:   <% @order_items.each do |item| %>
+    12:   <tr>
+    13:     <td><%=item.product.title %></td>
+    14:     <td><%=item.quantity %></td>
+    15:     <td><%=item.product.price %></td>
+    16:   </tr>
+  
+app/views/carts/show.html.erb:13:in `block in _app_views_carts_show_html_erb___499912557662860302_70327143227220'
+app/views/carts/show.html.erb:11:in `each'
+app/views/carts/show.html.erb:11:in `_app_views_carts_show_html_erb___499912557662860302_70327143227220'
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:18:44 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (60.9ms)
+Completed 200 OK in 175ms (Views: 113.4ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 16:45:24 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (79.4ms)
+Completed 200 OK in 216ms (Views: 134.7ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 16:45:27 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (147.6ms)
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `month_calendar' for #<#<Class:0x007fecaa32a4d0>:0x007fecaa3288b0>
+Did you mean?  month_field):
+    1: Your name is-> <%= @user.name %>
+    2: Your email is-> <%= @user.email %>
+    3: 
+    4: <%= month_calendar do |date| %>
+    5:     <%= date %>
+    6: <% end %>
+  
+app/views/users/show.html.erb:4:in `_app_views_users_show_html_erb___2028301086901364495_70327222228660'
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 16:46:25 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (113.1ms)
+  Rendered users/show.html.erb within layouts/application (116.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 4527ms (Views: 4484.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/3?start_date=2017-09-24" for 127.0.0.1 at 2017-10-28 16:46:38 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-09-24", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (27.4ms)
+  Rendered users/show.html.erb within layouts/application (32.3ms)
+Started GET "/users/3?start_date=2017-09-24" for 127.0.0.1 at 2017-10-28 16:46:38 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-09-24", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (16.5ms)
+  Rendered users/show.html.erb within layouts/application (44.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 181ms (Views: 175.4ms | ActiveRecord: 2.1ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 121ms (Views: 116.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/3?start_date=2017-10-02" for 127.0.0.1 at 2017-10-28 16:46:39 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-10-02", "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (14.7ms)
+  Rendered users/show.html.erb within layouts/application (18.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 69.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/3?start_date=2017-10-02" for 127.0.0.1 at 2017-10-28 17:25:17 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-10-02", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_calendar.html.erb (3.7ms)
+  Rendered users/show.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery-ui' with type 'text/css'
+Checked in these paths: 
+  /home/roman/test-exercise/app/assets/config
+  /home/roman/test-exercise/app/assets/images
+  /home/roman/test-exercise/app/assets/javascripts
+  /home/roman/test-exercise/app/assets/stylesheets
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/assets/stylesheets
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionview-5.1.4/lib/assets/compiled
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /home/roman/test-exercise/node_modules
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap-sass-3.3.7/assets/javascripts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap-sass-3.3.7/assets/fonts
+  /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap-sass-3.3.7/assets/images):
+    4:   <title>Task</title>
+    5:   <%= csrf_meta_tags %>
+    6: 
+    7:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9: </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:15
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3902772067232519083_69855049170040'
+Started GET "/users/3?start_date=2017-10-02" for 127.0.0.1 at 2017-10-28 17:25:59 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-10-02", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_calendar.html.erb (3.1ms)
+  Rendered users/show.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 2007ms (Views: 2004.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 17:26:03 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_calendar.html.erb (4.2ms)
+  Rendered users/show.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 56ms (Views: 53.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3?my_date=2017-11-01" for 127.0.0.1 at 2017-10-28 17:26:13 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"my_date"=>"2017-11-01", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_calendar.html.erb (5.1ms)
+  Rendered users/show.html.erb within layouts/application (8.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 109ms (Views: 106.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:31:23 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (87.6ms)
+Completed 200 OK in 197ms (Views: 125.2ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2017-10-28 17:31:30 +0300
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hNXbhh833+ja/3WBO+kspXx8j8EttjpJAFrMjjYyp1P46jL1UutuQwL2ymBk9HpLHBJ9dZ0InD7zaTYfRrzrzg==", "order"=>{"order_items_attributes"=>{"0"=>{"product_id"=>"4", "quantity"=>"1"}, "1"=>{"product_id"=>"6", "quantity"=>"1"}, "2"=>{"product_id"=>"8", "quantity"=>"1"}}}, "commit"=>"Create order"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 191.0], ["updated_at", "2017-10-28 14:31:30.087497"], ["id", 4]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 4], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.093979"], ["updated_at", "2017-10-28 14:31:30.093979"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 6], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.095927"], ["updated_at", "2017-10-28 14:31:30.095927"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 8], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.097310"], ["updated_at", "2017-10-28 14:31:30.097310"]]
+  [1m[35m (223.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 228.0], ["updated_at", "2017-10-28 14:31:30.332173"], ["id", 4]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 4], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.337107"], ["updated_at", "2017-10-28 14:31:30.337107"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 6], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.338940"], ["updated_at", "2017-10-28 14:31:30.338940"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 8], ["order_id", 4], ["created_at", "2017-10-28 14:31:30.340178"], ["updated_at", "2017-10-28 14:31:30.340178"]]
+  [1m[35m (203.4ms)[0m  [1m[36mcommit transaction[0m
+No template found for OrdersController#create, rendering head :no_content
+Completed 204 No Content in 538ms (ActiveRecord: 432.7ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 17:31:32 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 87ms (Views: 76.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:31:38 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 69ms (Views: 64.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2017-10-28 17:31:43 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered products/index.html.erb within layouts/application (9.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 56.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:31:45 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 53ms (Views: 51.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2017-10-28 17:31:52 +0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.9ms)
+  Rendered users/_form.html.erb (38.3ms)
+  Rendered users/edit.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 101ms (Views: 83.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cart.5" for 127.0.0.1 at 2017-10-28 17:31:57 +0300
+Processing by CartsController#show as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 83ms (Views: 70.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/cart.4" for 127.0.0.1 at 2017-10-28 17:32:01 +0300
+Processing by CartsController#show as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (31.4ms)
+Completed 200 OK in 82ms (Views: 71.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/cart.1" for 127.0.0.1 at 2017-10-28 17:32:05 +0300
+Processing by CartsController#show as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 104ms (Views: 91.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/cart.3" for 127.0.0.1 at 2017-10-28 17:32:08 +0300
+Processing by CartsController#show as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (28.9ms)
+Completed 200 OK in 79ms (Views: 68.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/cart.3" for 127.0.0.1 at 2017-10-28 17:33:26 +0300
+Processing by CartsController#show as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.2ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 84ms (Views: 71.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:33:27 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 62ms (Views: 57.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 17:33:31 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (12.4ms)
+  Rendered users/show.html.erb within layouts/application (15.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 57ms (Views: 54.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 17:33:36 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (10.2ms)
+  Rendered users/show.html.erb within layouts/application (13.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 54.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3?start_date=2017-11-06" for 127.0.0.1 at 2017-10-28 17:33:48 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"start_date"=>"2017-11-06", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (12.8ms)
+  Rendered users/show.html.erb within layouts/application (15.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 61.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:33:50 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 68ms (Views: 65.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 17:33:55 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 4], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.7ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 4]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 80ms (Views: 67.9ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:03 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 53ms (Views: 51.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:05 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 62ms (Views: 59.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/order_items/1" for 127.0.0.1 at 2017-10-28 17:35:06 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:18 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/order_items/2" for 127.0.0.1 at 2017-10-28 17:35:20 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:21 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (7.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/order_items/3" for 127.0.0.1 at 2017-10-28 17:35:22 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:23 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 59.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/order_items/4" for 127.0.0.1 at 2017-10-28 17:35:24 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:25 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 53.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/order_items/5" for 127.0.0.1 at 2017-10-28 17:35:26 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/order_items/5" for 127.0.0.1 at 2017-10-28 17:35:26 +0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for OrderItemsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:35:27 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 57ms (Views: 55.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 18:52:51 +0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (26.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 1821ms (Views: 1701.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2017-10-28 18:53:03 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (117.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 210ms (Views: 194.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2017-10-28 18:53:18 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KGRJ2DvbW0WG/cSsvkiNZKIJUvKXRqOkBEUTSrLNGt3lZ7YM5lWoIqOLmJZfaj0wbHCTFZhTI/o/T6XInYQsSQ==", "session"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log IN"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/users/3
+Completed 302 Found in 216ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 18:53:18 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (10.8ms)
+  Rendered users/show.html.erb within layouts/application (37.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 93ms (Views: 77.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 18:53:40 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 52ms (Views: 42.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 18:53:44 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  Rendered carts/show.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 158ms (Views: 60.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 18:53:46 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (70.1ms)
+Completed 200 OK in 106ms (Views: 100.9ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2017-10-28 18:58:23 +0300
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nTzZ8V0ldp9xjx7AKGeT0hiCCnvjweTNEqkMmjj4VYtb9TilVuKoQ1jT6Rd25zTk+LiNES5XxOiso6cM30fEsA==", "order"=>{"order_items_attributes"=>{"0"=>{"product_id"=>"3", "quantity"=>"1"}, "1"=>{"product_id"=>"5", "quantity"=>"1"}, "2"=>{"product_id"=>"7", "quantity"=>"1"}}}, "commit"=>"Create order"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (29.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "total_price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 3], ["total_price", 42.0], ["created_at", "2017-10-28 15:58:23.795328"], ["updated_at", "2017-10-28 15:58:23.795328"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.826714"], ["updated_at", "2017-10-28 15:58:23.826714"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.828399"], ["updated_at", "2017-10-28 15:58:23.828399"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 7], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.829777"], ["updated_at", "2017-10-28 15:58:23.829777"]]
+  [1m[35m (145.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 84.0], ["updated_at", "2017-10-28 15:58:23.989306"], ["id", 5]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.992982"], ["updated_at", "2017-10-28 15:58:23.992982"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.994451"], ["updated_at", "2017-10-28 15:58:23.994451"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 7], ["order_id", 5], ["created_at", "2017-10-28 15:58:23.997015"], ["updated_at", "2017-10-28 15:58:23.997015"]]
+  [1m[35m (111.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+No template found for OrdersController#create, rendering head :no_content
+Completed 204 No Content in 476ms (ActiveRecord: 294.6ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 18:58:26 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 5], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 81ms (Views: 73.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 18:59:25 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 79ms (Views: 68.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 19:01:06 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 5], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 61ms (Views: 50.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:01:25 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 70ms (Views: 63.7ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2017-10-28 19:01:27 +0300
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kFP8vRH0U3R6P7CjT9vbUf3mfB3NAYBRaS6Ib9BtFNVWmh3pGjONqFNjR3QRW3xnHdz7dwCXoHTXJCP5N9KF7g==", "order"=>{"order_items_attributes"=>{"0"=>{"product_id"=>"3", "quantity"=>"1"}, "1"=>{"product_id"=>"5", "quantity"=>"1"}, "2"=>{"product_id"=>"7", "quantity"=>"1"}}}, "commit"=>"Create order"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 126.0], ["updated_at", "2017-10-28 16:01:27.420993"], ["id", 5]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.423572"], ["updated_at", "2017-10-28 16:01:27.423572"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.425988"], ["updated_at", "2017-10-28 16:01:27.425988"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 7], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.427527"], ["updated_at", "2017-10-28 16:01:27.427527"]]
+  [1m[35m (155.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 168.0], ["updated_at", "2017-10-28 16:01:27.595174"], ["id", 5]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.597582"], ["updated_at", "2017-10-28 16:01:27.597582"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.599067"], ["updated_at", "2017-10-28 16:01:27.599067"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 7], ["order_id", 5], ["created_at", "2017-10-28 16:01:27.600397"], ["updated_at", "2017-10-28 16:01:27.600397"]]
+  [1m[35m (339.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+No template found for OrdersController#create, rendering head :no_content
+Completed 204 No Content in 587ms (ActiveRecord: 498.9ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 19:01:30 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (7.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 5], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 79ms (Views: 64.6ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:07:00 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 64ms (Views: 60.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2017-10-28 19:07:13 +0300
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5S4N80JFSv7lzdLTsdmyv2QDkkS5xNesf/Fn6vKhGMQj5+ynSYKUIsyRJQTvWRWJhDkVLnRS94nB+8x8FR6J/w==", "order"=>{"order_items_attributes"=>{"0"=>{"product_id"=>"3", "quantity"=>"1"}, "1"=>{"product_id"=>"5", "quantity"=>"1"}, "2"=>{"product_id"=>"8", "quantity"=>"1"}}}, "commit"=>"Create order"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 195.0], ["updated_at", "2017-10-28 16:07:13.391887"], ["id", 5]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.396077"], ["updated_at", "2017-10-28 16:07:13.396077"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.398452"], ["updated_at", "2017-10-28 16:07:13.398452"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 8], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.399832"], ["updated_at", "2017-10-28 16:07:13.399832"]]
+  [1m[35m (262.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "total_price" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["total_price", 222.0], ["updated_at", "2017-10-28 16:07:13.675782"], ["id", 5]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 3], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.678261"], ["updated_at", "2017-10-28 16:07:13.678261"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 5], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.680282"], ["updated_at", "2017-10-28 16:07:13.680282"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "product_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["quantity", 1], ["product_id", 8], ["order_id", 5], ["created_at", "2017-10-28 16:07:13.681986"], ["updated_at", "2017-10-28 16:07:13.681986"]]
+  [1m[35m (213.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+No template found for OrdersController#create, rendering head :no_content
+Completed 204 No Content in 583ms (ActiveRecord: 482.6ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 19:07:16 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 5], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (48.5ms)
+Completed 200 OK in 113ms (Views: 101.9ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-28 19:07:28 +0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fMOGrT3cWObYRkfM2Yy9wyFr2RjOjpSesv/JPw2tB01YTby22JmgoxoqSe5IaYlymF55Rj1puBfa0bQDw1cOxw=="}
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:07:28 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (3.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 50ms (Views: 47.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2017-10-28 19:07:30 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2017-10-28 19:07:41 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"entd3ooWNaBhfKj9/Dwn6RgDZOWwLp/hcHkD17U93TW3eKIKV5jGx0QK9McdHpe91nqlAr87H79Lc7VVmnTroQ==", "session"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log IN"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/users/3
+Completed 302 Found in 125ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-28 19:07:41 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered /home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views/simple_calendar/_month_calendar.html.erb (9.3ms)
+  Rendered users/show.html.erb within layouts/application (11.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-10-28 19:07:46 +0300
+Processing by CartsController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Order Load (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mOrderItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "order_items" WHERE "order_items"."order_id" = ? LIMIT ?[0m  [["order_id", 5], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = ?[0m  [["order_id", 5]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered carts/show.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 83ms (Views: 74.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:07:52 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 64ms (Views: 60.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:09:49 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (481.3ms)
+Completed 500 Internal Server Error in 486ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `product' for #<#<Class:0x007f009807c4d0>:0x007f00896eeed0>
+Did you mean?  @products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820141258060'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820141258060'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820141258060'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:23 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (22.5ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x005628390abc18>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_47365385382240'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_47365385382240'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_47365385382240'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:25 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (23.9ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f0070a01438>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819933015520'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819933015520'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819933015520'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:28 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (13.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f008417bcc8>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820096561900'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820096561900'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820096561900'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:28 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f0089186fd8>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820138701720'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820138701720'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820138701720'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:29 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (21.3ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f0089f02838>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820145172400'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820145172400'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820145172400'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:29 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (18.5ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f0089819fa8>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820142101820'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820142101820'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820142101820'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:30 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (14.1ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f008a034c88>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820146158480'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820146158480'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820146158480'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:10:30 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 11]]
+  Rendered orders/new.html.erb within layouts/application (12.4ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `image?' for #<Product::ActiveRecord_Associations_CollectionProxy:0x007f0089d73058>):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.products.image.url(:large) if category.products.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820144881300'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820144881300'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820144881300'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:35 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (18.2ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f009806b6d0>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819928344060'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819928344060'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819928344060'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:36 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (15.2ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f007002f950>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819928128620'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819928128620'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819928128620'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:37 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f0070772c30>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819931926740'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819931926740'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819931926740'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:37 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (16.0ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f0070286370>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819929310840'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819929310840'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819929310840'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:38 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (13.8ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f00709e7448>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69819933196900'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69819933196900'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69819933196900'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:38 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f0070465060>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820028674360'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820028674360'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820028674360'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:39 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (14.6ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f007c3b12e8>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820030586200'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820030586200'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820030586200'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:40 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f007c218328>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820029782240'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820029782240'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820029782240'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:40 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (17.0ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x0056283a089400>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_47365387132880'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_47365387132880'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_47365387132880'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:13:41 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product' for #<Category:0x007f0084155708>
+Did you mean?  products
+               products=):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=image_tag category.product.image.url(:large) if category.product.image? %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820096471000'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820096471000'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820096471000'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:38 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (30.7ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f0088ed7850>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820137276320'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820137276320'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820137276320'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:39 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (17.4ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f0084285d80>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820097099080'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820097099080'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820097099080'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:40 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (21.8ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f008921adc8>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820139048220'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820139048220'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820139048220'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:40 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f0084390c98>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820097650800'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820097650800'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820097650800'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:41 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (20.2ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f008941ddf0>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820140024660'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820140024660'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820140024660'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:41 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (20.1ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<Category:0x007f0089f07a18>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.product_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820145859160'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820145859160'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820145859160'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:54 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (29.4ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `products_path' for #<Category:0x007f008957ace8>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.products_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820140758580'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820140758580'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820140758580'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:55 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (20.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `products_path' for #<Category:0x007f0088aeaaf8>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.products_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820146573600'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820146573600'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820146573600'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:15:56 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  Rendered orders/new.html.erb within layouts/application (31.3ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `products_path' for #<Category:0x007f0089641b68>
+Did you mean?  products):
+    4:             <% if category.products.any? %>
+    5:                 <div class="text-center">
+    6:                   <h2><%= category.name%></h2>
+    7:                   <%=link_to "category.name", category.products_path %>
+    8:                 </div>
+    9: 
+   10:                 <%= f.fields_for :order_items, @order.order_items.build do |oi| %>
+  
+app/views/orders/new.html.erb:7:in `block (2 levels) in _app_views_orders_new_html_erb___1618543919864271945_69820141189800'
+app/views/orders/new.html.erb:3:in `block in _app_views_orders_new_html_erb___1618543919864271945_69820141189800'
+app/views/orders/new.html.erb:2:in `_app_views_orders_new_html_erb___1618543919864271945_69820141189800'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:18:31 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."title", "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered orders/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 70ms (Views: 67.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:20:01 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial products/_index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/roman/test-exercise/app/views"
+  * "/home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views"
+):
+    1: <%= render 'products/index'%>
+    2: <% if logged_in? %>
+    3:     <%=form_for @order do |f| %>
+    4:         <%@categories.each do |category| %>
+  
+app/views/orders/new.html.erb:1:in `_app_views_orders_new_html_erb___1618543919864271945_69820029551420'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:20:52 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial products/_index.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/roman/test-exercise/app/views"
+  * "/home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views"
+):
+    1: <%= render 'products/index.html.erb'%>
+    2: <% if logged_in? %>
+    3:     <%=form_for @order do |f| %>
+    4:         <%@categories.each do |category| %>
+  
+app/views/orders/new.html.erb:1:in `_app_views_orders_new_html_erb___1618543919864271945_47365385456100'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:20:53 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial products/_index.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/roman/test-exercise/app/views"
+  * "/home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views"
+):
+    1: <%= render 'products/index.html.erb'%>
+    2: <% if logged_in? %>
+    3:     <%=form_for @order do |f| %>
+    4:         <%@categories.each do |category| %>
+  
+app/views/orders/new.html.erb:1:in `_app_views_orders_new_html_erb___1618543919864271945_69820096246000'
+Started GET "/" for 127.0.0.1 at 2017-10-28 19:20:53 +0300
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial products/_index.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/roman/test-exercise/app/views"
+  * "/home/roman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.7/app/views"
+):
+    1: <%= render 'products/index.html.erb'%>
+    2: <% if logged_in? %>
+    3:     <%=form_for @order do |f| %>
+    4:         <%@categories.each do |category| %>
+  
+app/views/orders/new.html.erb:1:in `_app_views_orders_new_html_erb___1618543919864271945_69820136905040'

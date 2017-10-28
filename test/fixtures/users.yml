@@ -6,7 +6,7 @@ email: Test@test.com
 password_digest: <%= User.digest('test1234')%>
 
 tester2:
-name: Tester2
-email: Test2@test.com
+name: test3
+email: test2@test.com
 password_digest: <%= User.digest('test1234')%>
 
