@@ -18,6 +18,9 @@ class OrderItemsController < ApplicationController
 		redirect_to cart_path		
 	end
 
+	def show
+		@cart = current_order.order_items
+	end
 
 	private
 

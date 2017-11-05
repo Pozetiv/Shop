@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_action :search_user, only: [:show, :edit, :update]
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :currect_user && :admin, only: [:edit, :update, :destroy]
+  before_action :currect_user, only: [:edit, :update, :destroy]
+
+  def index
+    @users = User.all
+  end
 
   def show
+    @user = User.find(params[:id])
 
   end
 
@@ -23,10 +27,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
 
   end
 
   def update
+    @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
       flash[:success] = "Profile update"

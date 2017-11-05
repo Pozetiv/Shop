@@ -1,0 +1,23 @@
+<% if @cart.any?%>
+    <h2 class="text-center">Cart items</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Item name</th>
+        <th>item unite price $</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @cart.each do |item| %>
+          <tr>
+            <td><%=link_to item.product.title, ""  %>
+            <td><%=item.product.price %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Create new order', "", class: 'btn btn-info btn-md' %>
+    <% else %>
+    <h2>You cart is empty?</h2>
+<% end %>
