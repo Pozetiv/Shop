@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def admin
     if !current_user.admin
       redirect_to root_path
-      flash[:danger] = "Your ate not admin"
+      flash[:danger] = 'Your cant do this, because your are not admin'
     end
-    end
+  end
 end

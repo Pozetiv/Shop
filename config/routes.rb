@@ -1,22 +1,16 @@
 Rails.application.routes.draw do
 
-  root "orders#new"
+  root "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
+  get '/singup', to: 'users#new'
+  post '/singup', to: 'users#create'
 
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
-
-  get '/signin', to: 'sessions#new'
-  post '/signin', to: 'sessions#create'
+  get '/singin', to: 'sessions#new'
+  post '/singin', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  delete 'destroy', to: 'products#destroy'
-
-  resources :orders
   resources :products
   resources :order_items
   resource :cart, only: [:show]
-
-
 end

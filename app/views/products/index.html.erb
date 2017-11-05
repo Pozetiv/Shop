@@ -1,18 +1,21 @@
-<h2>Products list</h2>
-<% @categories.each do |cat| %>
-    <h3 class="text-center"><%= cat.name %></h3>
-    <%cat.products.each do |product| %>
+
+<%@categories.each do |categories| %>
+    <div class="text-center"><h2><%=categories.name %> </h2></div>
+    <div class="col-md-12">
+    <%categories.products.each do |product|%>
         <div class="col-md-4">
-          <%= image_tag product.image.url(:thumb), class: 'img-thumbnail' if product.image? %>
-          <%= link_to product.title, product_path(product) %></br>
-<% if current_user.admin%>
-        <%= link_to "Edit", edit_product_path(product), class: "btn btn-info bnt-sm" %>
-<% end%>
+          <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %></br>
+          <%= link_to product.title, product_path(product)%> | <%= number_to_currency product.price%>
+          <% if logged_in? %>
+              <%= form_for @order_item do |f|%>
+                  <%= f.hidden_field :product_id, value: product.id%>
+                  <%= f.number_field :quantity, min: 1, value:1 %>
+                  <%=f.submit "Add to cart" %>
+                  <% end %>
+          <%else %>
+              <%= link_to "Your wan't buy, you must log in ", singin_path , class: "btn btn-info" %>
+          <% end %>
         </div>
         <% end %>
-    </br>
-
-
-
-<% end %>
-
+    </div>
+<% end%>

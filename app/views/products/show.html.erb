@@ -6,7 +6,3 @@
 <%= @product.description %></br>
 
 Price the <%= @product.title %> -> <%= @product.price %> $
-</br>
-<%if current_user.admin %>
-    <%= link_to "Edit product", edit_product_path, class: 'btn btn-info btn-sm ' %>
-<% end %>

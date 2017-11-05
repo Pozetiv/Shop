@@ -3,8 +3,6 @@ class Product < ApplicationRecord
   #relationship
 	has_many :order_items
 
-
-
   belongs_to :category
 
   #validates
