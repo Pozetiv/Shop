@@ -1,4 +1,6 @@
-
+<%if logged_in? %>
+    <h2 class="text-center">You can buy only one item frome category</h2>
+    <% end %>
 <%@categories.each do |categories| %>
     <div class="text-center"><h2><%=categories.name %> </h2></div>
     <div class="col-md-12">

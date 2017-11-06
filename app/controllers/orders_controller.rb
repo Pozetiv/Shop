@@ -1,9 +1,8 @@
 class OrdersController < ApplicationController
-  def new
-    @order = Order.new
-    @categories = Category.all
-    @products = Product.all
+  def index
+    @orders = Order.all
   end
+
 
   def create
     @order = current_order
@@ -15,11 +14,15 @@ class OrdersController < ApplicationController
       redirect_to root_path
       flash[:info] = "Opps we have some problems with order"
     end
-
   end
 
+  def status
+
+  end
   private
   def order_params
-    params.require(:order).permit(order_items_attributes: [:id, :product_id, :quantity])
+    params.require(:order).permit( :product_id, :quantity)
   end
+
+
 end
