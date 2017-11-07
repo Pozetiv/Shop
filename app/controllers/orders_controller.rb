@@ -16,12 +16,18 @@ class OrdersController < ApplicationController
     end
   end
 
-  def status
-
+  def show
+    @cart = current_order.order_items
+    @order = current_order
   end
+
+  def status
+    @status=current_order.update_attributes(order_params)
+  end
+
   private
   def order_params
-    params.require(:order).permit( :product_id, :quantity)
+    params.require(:order).permit(:product_id, :quantity, :status)
   end
 
 

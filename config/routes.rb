@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  patch 'status', to: 'orders#status'
+
   resources :products
   resources :order_items
+  resources :orders
 end

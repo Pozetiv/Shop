@@ -17,7 +17,7 @@
       <% end %>
       </tbody>
     </table>
-    <%= link_to 'Create new order', "", class: 'btn btn-info btn-md' %>
+    <%= link_to("Create order", status_path(order, {:status =>'Compleate Order'}), method: :patch, class: "btn btn-success") %>
     <% else %>
     <h2>You cart is empty?</h2>
 <% end %>
