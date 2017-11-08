@@ -1,9 +1,10 @@
 class Order < ApplicationRecord
+	attr_accessor  :status
 	belongs_to :user
 	has_many :order_items
 	has_many :products, through: :order_items
 	before_save :update_total
-	before_save :update_status
+	before_save :up_status
 
 
 	def calculate_tota
@@ -12,8 +13,8 @@ class Order < ApplicationRecord
 
 	private
 
-	def update_status
-		if self.status == nil?
+	def up_status
+		if self.status == nil
 			self.status = "In progress"
 		end
 	end

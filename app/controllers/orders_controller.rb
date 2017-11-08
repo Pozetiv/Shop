@@ -22,7 +22,8 @@ class OrdersController < ApplicationController
   end
 
   def status
-    @status=current_order.update_attributes(order_params)
+    @status=current_order.update_attributes(status: params[:status])
+    current_order.save
   end
 
   private
