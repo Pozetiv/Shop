@@ -1,4 +1,6 @@
-<% if @cart.any?%>
+
+
+<% if @order.any?%>
     <table class="table">
       <thead>
       <tr>
@@ -8,20 +10,22 @@
       </tr>
       </thead>
       <tbody>
-      <% @cart.each do |item| %>
+      <% @order.each do |item| %>
           <tr>
-            <td><%=item.product.title %></td>
-            <td><%=item.quantity %></td>
-            <td><%=item.product.price %></td>
+            <td><%=item.order_items %></td>
+
           </tr>
       <% end %>
-      <td>Total Price: <%= @order.total_price  %>$</td>
+      <td>Total Price: <%= @orders.total_price  %>$</td>
       </tbody>
     </table>
 
-    <%= link_to("Create order", status_path(status: 'Compleate'), method: :patch, class: "btn btn-success") %>
+
 
 
 <% else %>
-    You cart is empty!
+    Your haven't got order
 <% end %>
+
+<%= link_to 'Order builde #{s}' %>
+

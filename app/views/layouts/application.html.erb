@@ -36,7 +36,8 @@
                   </ul>
                 </li>
             <% end %>
-            <li><%= link_to "Cart", order_path(current_user), class: "glyphicon glyphicon-shopping-cart btn btn-link"  %></li>
+            <li><%= link_to "Orders", order_path(current_user), class: "btn btn-link" %></li>
+            <li><%= link_to "Cart", cart_path(current_user), class: "glyphicon glyphicon-shopping-cart btn btn-link"  %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
             <ul class="dropdown-menu">
