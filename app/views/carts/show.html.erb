@@ -4,13 +4,13 @@
       <tr>
         <th>Product</th>
         <th>Quantity</th>
-        <th>Item price $</th>
+        <th>Item unit price $</th>
       </tr>
       </thead>
       <tbody>
       <% @cart.each do |item| %>
           <tr>
-            <td><%=link_to "#{item.product.title}" %></td>
+            <td><%=link_to "#{item.product.title}", product_path(item.product) %></td>
             <td><%=item.quantity %></td>
             <td><%=item.product.price %></td>
           </tr>
@@ -19,7 +19,7 @@
       </tbody>
     </table>
 
-    <%= link_to("Create order", status_path(status: 'Compleate'), method: :patch, class: "btn btn-success") %>
+    <%= link_to("Create order", status_path(status: 'In_order'), method: :patch, class: "btn btn-success") %>
 
 
 <% else %>

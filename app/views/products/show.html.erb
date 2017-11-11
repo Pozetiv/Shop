@@ -2,7 +2,9 @@
 
 <%= image_tag @product.image.url(:large), class: "img-show" if @product.image?  %>
 
-  <h4>description</h4></br>
+  <h4>description</h4> </br>
 <%= @product.description %></br>
 
 Price the <%= @product.title %> -> <%= @product.price %> $
+</br>
+<%= link_to "Edit #{@product.title}", edit_product_path %>

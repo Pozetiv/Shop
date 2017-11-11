@@ -20,6 +20,25 @@
       </tbody>
     </table>
 
+    <% if @order.any? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Date create order</th>
+            <th>Items name</th>
+            <th>Total price order</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @order.each do |item| %>
+             <tr>
+               <td><%=item.created_at.to_date.strftime("%d %B, %Y") %></td>
+               <td><%=item.products %></td>
+             </tr>
+        <% end %>
+          </tbody>
+        </table>
+        <% end %>
 
 
 

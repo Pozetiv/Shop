@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.where(status: 'Compleate')
+    @order = current_user.orders.where(status: 'In_order')
     @orders = current_order
   end
 

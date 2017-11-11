@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-	attr_accessor  :status
 	belongs_to :user
 	has_many :order_items
 	has_many :products, through: :order_items
@@ -15,7 +14,7 @@ class Order < ApplicationRecord
 
 	def up_status
 		if self.status == nil
-			self.status = "In progress"
+			self.status = "In_cart"
 		end
 	end
 
