@@ -1,26 +1,4 @@
-
-
-<% if @order.any?%>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Item price $</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @order.each do |item| %>
-          <tr>
-            <td><%=item.order_items %></td>
-
-          </tr>
-      <% end %>
-      <td>Total Price: <%= @orders.total_price  %>$</td>
-      </tbody>
-    </table>
-
-    <% if @order.any? %>
+ <% if @orders.any? %>
         <table class="table">
           <thead>
           <tr>
@@ -30,21 +8,21 @@
           </tr>
           </thead>
           <tbody>
-          <% @order.each do |item| %>
+          <% @orders.each do |item| %>
              <tr>
-               <td><%=item.created_at.to_date.strftime("%d %B, %Y") %></td>
-               <td><%=item.products %></td>
+               <td><%=item.updated_at.to_date.strftime("%d %B, %Y") %></td>
+               <td> <% item.products.each do |products| %>
+                   <li><%=products.title%></li>
+                 <%end%>
+               </td>
+               <td><%= item.total_price %></td>
              </tr>
         <% end %>
           </tbody>
         </table>
-        <% end %>
-
-
-
 <% else %>
-    Your haven't got order
+    Your orders history is empty, or you don't submit you items in cart
 <% end %>
 
-<%= link_to 'Order builde #{s}' %>
+
 
