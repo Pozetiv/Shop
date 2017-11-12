@@ -8,14 +8,17 @@
       </tr>
       </thead>
       <tbody>
-      <% @cart.each do |item| %>
+      <% @cart.each do |cart| %>
+
+              <% cart.order_items.each do |ord_items|%>
           <tr>
-            <td><%=link_to "#{item.product.title}", product_path(item.product) %></td>
-            <td><%=item.quantity %></td>
-            <td><%=item.product.price %></td>
+            <td><%=link_to "#{ord_items.product.title}", product_path(ord_items.product) %></td>
+            <td><%=ord_items.quantity %></td>
+            <td><%=ord_items.product.price %></td>
           </tr>
+      <%end %>
+      <td>Total Price: <%=cart.total_price   %>$</td>
       <% end %>
-      <td>Total Price: <%= @order.total_price  %>$</td>
       </tbody>
     </table>
 

@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
   def status
     @status=current_order.update_attributes(status: params[:status])
-    current_order.save
+    redirect_to order_path(current_user)
   end
 
   private
