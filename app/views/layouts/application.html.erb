@@ -32,10 +32,11 @@
                   <ul class="dropdown-menu">
                     <li><%=link_to "Creat new item", new_product_path %></li>
                     <li><%=link_to "List users", users_path %></li>
-                    <li>list orders</li>
+                    <li><%=link_to "List orders", orders_path %></li>
                   </ul>
                 </li>
             <% end %>
+            <li><%= link_to "Today is #{Date.today.strftime("%a, %e")}" %></li>
             <li><%= link_to "Orders", order_path(current_user), class: "btn btn-link" %></li>
             <li><%= link_to "Cart", cart_path(current_user), class: "glyphicon glyphicon-shopping-cart btn btn-link"  %></li>
             <li class="dropdown">

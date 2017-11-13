@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 	before_save :update_total
 	before_save :up_status
 
-
+	default_scope -> { order(created_at: :desc) }
 
 	def calculate_tota
 		self.order_items.collect { |item| item.product.price * item.quantity }.sum	

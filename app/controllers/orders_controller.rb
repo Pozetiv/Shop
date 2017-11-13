@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :admin, only: [:index]
   def index
-    @orders = Order.all
+
+    @orders = Order.where(status: 'In_order')
+
   end
 
 
