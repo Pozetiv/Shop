@@ -18,14 +18,11 @@ class OrderItemsController < ApplicationController
 		redirect_to cart_path		
 	end
 
-	def show
-		@cart = current_order.order_items
-	end
 
 	private
 
 	def item_params
-		params.require(:order_item).permit(:quantity, :product_id)
+		params.require(:order_item).permit(:product_id, :quantity, :fixprice)
 		
 	end
 end

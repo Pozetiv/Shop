@@ -3,7 +3,7 @@
           <thead>
           <tr>
             <th>Date create order</th>
-            <th>Items name</th>
+            <th>Items name -> price $</th>
             <th>Total price order</th>
           </tr>
           </thead>
@@ -11,9 +11,10 @@
           <% @orders.each do |item| %>
              <tr>
                <td><%=item.updated_at.to_date.strftime("%d %B, %Y") %></td>
-               <td> <% item.products.each do |products| %>
-                   <li><%=products.title%></li>
-                 <%end%>
+               <td>
+                     <% item.order_items.each do |ord_itms| %>
+                   <li><%=ord_itms.product.title%> -> <%= ord_itms.fixprice %>$</li>
+                 <% end %>
                </td>
                <td><%= item.total_price %></td>
              </tr>
@@ -21,7 +22,7 @@
           </tbody>
         </table>
 <% else %>
-    Your orders history is empty, or you don't submit you items in cart
+    Your orders history is empty, or you don't submit you cart items
 <% end %>
 
 

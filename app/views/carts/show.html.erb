@@ -14,7 +14,7 @@
           <tr>
             <td><%=link_to "#{ord_items.product.title}", product_path(ord_items.product) %></td>
             <td><%=ord_items.quantity %></td>
-            <td><%=ord_items.product.price %></td>
+            <td><%=ord_items.fixprice %></td>
           </tr>
       <%end %>
       <td>Total Price: <%=cart.total_price   %>$</td>
