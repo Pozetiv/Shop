@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 	default_scope -> { order(created_at: :desc) }
 
 	def calculate_tota
-		self.order_items.collect { |item| item.product.price * item.quantity }.sum	
+		self.order_items.collect { |item| item.fixprice * item.quantity }.sum
 	end
 
 	private

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
   	if session[:order_id]
-  		current_user.orders.find(session[:order_id])
+      current_user.orders.find(session[:order_id])
   	else
   		current_user.orders.new
   end
@@ -19,4 +19,6 @@ class ApplicationController < ActionController::Base
       flash[:danger] = 'Your cant do this, because your are not admin'
     end
   end
+
+
 end

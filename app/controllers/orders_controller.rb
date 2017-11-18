@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   before_action :admin, only: [:index]
   def index
-
     @orders = Order.where(status: 'In_order')
-
   end
 
 
@@ -26,6 +24,7 @@ class OrdersController < ApplicationController
   def status
     @status=current_order.update_attributes(status: params[:status])
     redirect_to order_path(current_user)
+    session.delete(:order_id)
   end
 
   private
