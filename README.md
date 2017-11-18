@@ -1,24 +1,10 @@
-# README
+Example rails shop project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1, RESTfull menu items
 
-Things you may want to cover:
+2.Do cart-orders user's system
 
-* Ruby version
+3.Validate items menu
 
-* System dependencies
+4.Make admin's menu
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
