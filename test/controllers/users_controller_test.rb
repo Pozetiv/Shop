@@ -18,7 +18,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #end
 
   test "sign_in page" do
-    get signin_path
+    get signup_path
     assert_response :success
   end
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 	#validates
 	validates :name, presence: true, length: { minimum: 3}
-	validates :email, presence: true, length: { maximum: 255}, uniqueness: { case_sensitive: false}
+	validates :email, presence: true, length: { maximum: 100}, uniqueness: { case_sensitive: false}
 	validates :password, presence: true, length: { minimum: 4}, allow_nil: true
 
 	def User.digest(string)
