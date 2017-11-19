@@ -1,2 +1,3 @@
-Your name is-> <%= @user.name %>
+<% provide(:title, "#{@user.name} profile page") %>
+Your name is-> <%= @user.name %></br>
 Your email is-> <%= @user.email %>
