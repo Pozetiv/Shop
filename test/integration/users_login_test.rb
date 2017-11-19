@@ -5,7 +5,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:test)
   end
-      .
+
 
   test "login with invalid information" do
     get signin_path
