@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :admin, only: [:index]
+
   def index
     @orders = Order.where(status: 'In_order')
   end
@@ -31,6 +32,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:product_id, :quantity, :status)
   end
-
 
 end

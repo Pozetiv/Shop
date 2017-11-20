@@ -14,3 +14,5 @@ class ActiveSupport::TestCase
     !session[:user_id].nil?
   end
 end
+
+

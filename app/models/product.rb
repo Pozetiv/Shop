@@ -6,6 +6,6 @@ class Product < ApplicationRecord
   belongs_to :category
 
   #validates
-  validates :title, :description, :price, presence: true
+  validates :title, :description, :price, :category, presence: true
 
 end
