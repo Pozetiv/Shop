@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.find 1
-user.admin = true
-user.save
+#Create three category group
+Category.create(name: 'First course')
+Category.create(name: 'Main course')
+Category.create(name: 'Drinks')

@@ -16,11 +16,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
    # assert flash.empty?
    # assert_redirect_to root_url
   #end
-
-  test "sign_in page" do
+   #check existence pages
+  test "sign_up page" do
     get signup_path
     assert_response :success
   end
+
+  test "all users" do
+    get users_path
+    assert_response :success
+  end
+
+
 
 
 end

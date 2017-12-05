@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	before_save :find_admin
 	has_many :orders
 
 	before_save {self.email = email.downcase}
@@ -14,5 +15,12 @@ class User < ApplicationRecord
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
 							 																		BCrypt::Engine.cost
 		BCrypt::Password.create(string, cost: cost)
+	end
+
+	private
+
+	def find_admin
+		up = User.first
+		up.update_attributes(admin: true)
 	end
 end
