@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	before_save :find_admin
+	before_save :admin_rules
 	has_many :orders
 
 	before_save {self.email = email.downcase}
@@ -17,10 +17,8 @@ class User < ApplicationRecord
 		BCrypt::Password.create(string, cost: cost)
 	end
 
-	private
 
-	def find_admin
-		up = User.first
-		up.update_attributes(admin: true)
-	end
+	def admin_rules
+		self.admin = User.count == 0
+		end
 end
