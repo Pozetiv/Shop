@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
     session.delete(:order_id)
   end
 
+  def date
+    @orders = Order.where(created_at: (Date.today))
+  end
+
   private
   def order_params
     params.require(:order).permit(:product_id, :quantity, :status)

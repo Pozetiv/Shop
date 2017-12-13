@@ -38,7 +38,6 @@ gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec', '~> 3.7'
   gem 'rspec-rails', '~> 3.6'
@@ -49,6 +48,7 @@ end
   gem 'pg'
 
 group :test do
+  gem 'capybara', '~> 2.13'
   gem 'rails-controller-testing', '1.0.2'
   gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.13.0'

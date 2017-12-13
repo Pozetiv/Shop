@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :order_items
   resources :orders
   resources :carts
+
+  get '/date', to: "orders#date"
 end
