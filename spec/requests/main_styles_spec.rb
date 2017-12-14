@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "MainStyles", type: :feature do
 
-  describe "TEST pages" do
+  describe "TEST layoutes " do
 
     subject { page }
 
@@ -22,13 +22,23 @@ RSpec.describe "MainStyles", type: :feature do
       expect(page).to have_content('Sign UP')
       click_link "Sign UP"
       end
+
         #redirect to SIGN_UP
       before {visit signup_path }
       it {should have_title('Registration page')}
       it {should have_content('Name')}
       it {should have_content('Email')}
       it {should have_content('Password')}
+
     end
+
+    describe "product form" do
+      before {visit new_product_path}
+      it {should have_content('Title')}
+      it {should have_content('Description')}
+      it {should have_content('Price')}
+    end
+
 
   end
    end

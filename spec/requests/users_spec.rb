@@ -9,7 +9,7 @@ RSpec.describe "Users", type: :request do
     describe "invalide date" do
       it "should dont create new user" do
         expect{click_button "Create account"}.not_to change(User, :count)
-        
+        expect(page).to have_selector('div.alert')
       end
     end
 
@@ -35,9 +35,22 @@ RSpec.describe "Users", type: :request do
       before {visit user_path(user)}
       it {should have_content(user.name)}
       it {should have_content(user.email)}
+     # it { should have_link('Profile',     href: user_path(user)) }
+      #it { should have_link('Log out',    href: logout_path) }
+      #it { should have_link('Edite profile',    href: edit_user_path(user)) }
+      #it { should_not have_link('Sign in', href: signin_path) }
     end
 
-  end
+    #describe "followed by signout" do
+     # before { click_link "Log out" }
+      #it { should have_link('Sign IN') }
+      #end
+    
+    describe "Edit profile"
+    let(:user) {FactoryGirl.create(:user)}
+    before (visit edit_user_path(user))
+
+
 
 
 end
