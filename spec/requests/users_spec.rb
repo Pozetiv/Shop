@@ -35,6 +35,7 @@ RSpec.describe "Users", type: :request do
       before {visit user_path(user)}
       it {should have_content(user.name)}
       it {should have_content(user.email)}
+      #before { click_button "Account"}
      # it { should have_link('Profile',     href: user_path(user)) }
       #it { should have_link('Log out',    href: logout_path) }
       #it { should have_link('Edite profile',    href: edit_user_path(user)) }
@@ -45,12 +46,42 @@ RSpec.describe "Users", type: :request do
      # before { click_link "Log out" }
       #it { should have_link('Sign IN') }
       #end
-    
-    describe "Edit profile"
-    let(:user) {FactoryGirl.create(:user)}
-    before (visit edit_user_path(user))
+
+   # describe "Edit profile"
+   # let(:user) {FactoryGirl.create(:user)}
+    #before (visit edit_user_path(user))
+  end
+
+  describe "SIGN IN" do
+    before {visit signin_path}
+    subject {page}
+
+    describe "invalide dates" do
+    before {click_button "Log IN"}
+    it{should have_selector('div.alert.alert-danger')}
+
+      describe "valide dates user" do
+        let (:user) {FactoryGirl.create(:user)}
+        before do
+          fill_in "Email", with: user.email
+          fill_in "Password", with: user.password
+          click_button "Log IN"
+        end
+          it {should have_link('Profile', href: user_path(user))}
+          #it {should have_link('Edit profile', href: edit_user_path(user))}
+          it { should have_link('Log out',    href: logout_path) }
+          it {should have_link('Cart', href: cart_path(user))}
+
+        describe "followed by signout" do
+          before { click_link "Log out" }
+          it { should have_link('Sign IN') }
+        end
+        
+        end
+      end
+      end
 
 
+  end
 
 
-end
