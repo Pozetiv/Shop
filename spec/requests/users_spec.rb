@@ -35,22 +35,7 @@ RSpec.describe "Users", type: :request do
       before {visit user_path(user)}
       it {should have_content(user.name)}
       it {should have_content(user.email)}
-      #before { click_button "Account"}
-     # it { should have_link('Profile',     href: user_path(user)) }
-      #it { should have_link('Log out',    href: logout_path) }
-      #it { should have_link('Edite profile',    href: edit_user_path(user)) }
-      #it { should_not have_link('Sign in', href: signin_path) }
     end
-
-    #describe "followed by signout" do
-     # before { click_link "Log out" }
-      #it { should have_link('Sign IN') }
-      #end
-
-   # describe "Edit profile"
-   # let(:user) {FactoryGirl.create(:user)}
-    #before (visit edit_user_path(user))
-  end
 
   describe "SIGN IN" do
     before {visit signin_path}
@@ -59,6 +44,7 @@ RSpec.describe "Users", type: :request do
     describe "invalide dates" do
     before {click_button "Log IN"}
     it{should have_selector('div.alert.alert-danger')}
+    end
 
       describe "valide dates user" do
         let (:user) {FactoryGirl.create(:user)}
@@ -67,21 +53,43 @@ RSpec.describe "Users", type: :request do
           fill_in "Password", with: user.password
           click_button "Log IN"
         end
+        ## ADMIN PANEL
+          it {should_not have_link('Create new item', href: new_product_path)}
+          it {should_not have_link('List users', href: new_product_path)}
+          it {should_not have_link('List orders', href: orders_path)}
+                                                              #####
           it {should have_link('Profile', href: user_path(user))}
-          #it {should have_link('Edit profile', href: edit_user_path(user))}
+          it {should have_link('Edit profile', href: edit_user_path(user))}
           it { should have_link('Log out',    href: logout_path) }
           it {should have_link('Cart', href: cart_path(user))}
+          it { should_not have_link('Sign IN', href: signin_path) }
 
-        describe "followed by signout" do
+
+        describe "edit" do
+          let(:user) { FactoryGirl.create(:user) }
+          before {visit edit_user_path(user)}
+          subject {page}
+          it {should have_content("Name")}
+          it {should have_content("Email")}
+          it {should have_content("Password")}
+          end
+
+         describe "function log out" do
           before { click_link "Log out" }
           it { should have_link('Sign IN') }
-        end
-        
-        end
-      end
-      end
+           it {should have_title('Main page')}
+         end
 
+      end
 
   end
+
+  end
+
+
+
+end
+
+
 
 
