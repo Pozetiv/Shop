@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :admin, only: [:index]
 
   def index
-    @orders = Order.where(status: 'In_order')
+    @orderss= Order.where(status: 'In_order')
+    @orders = @orderss.paginate(:page => params[:page])
   end
 
 
@@ -19,17 +20,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @orders = current_user.orders.where(status: 'In_order')
+    @orders = current_user.orders.where(status: 'In_order').paginate(:page => params[:page])
   end
 
   def status
     @status=current_order.update_attributes(status: params[:status])
     redirect_to order_path(current_user)
     session.delete(:order_id)
-  end
-
-  def date
-    @orders = Order.where(created_at: (Date.today))
   end
 
   private

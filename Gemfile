@@ -74,4 +74,4 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'mini_magick', '~> 4.8'
-
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'

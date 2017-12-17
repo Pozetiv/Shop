@@ -1,4 +1,5 @@
  <% if @orders.any? %>
+     <%= will_paginate @orders %>
         <table class="table">
           <thead>
           <tr>
