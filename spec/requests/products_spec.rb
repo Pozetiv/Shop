@@ -10,7 +10,7 @@ RSpec.describe "Products", type: :request do
         click_button "Log IN"
      end
       subject {page}
-      it{should_not have_link('Creat new item', href: new_product_path)}
-
+      it{should have_link('Creat new item', href: new_product_path)}
+    
     end
 end

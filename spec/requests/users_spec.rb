@@ -54,15 +54,15 @@ RSpec.describe "Users", type: :request do
           click_button "Log IN"
         end
         ## ADMIN PANEL
-          it {should_not have_link('Create new item', href: new_product_path)}
-          it {should_not have_link('List users', href: new_product_path)}
-          it {should_not have_link('List orders', href: orders_path)}
+          it {should have_link('Creat new item', href: new_product_path)}
+          it {should have_link('List users', href: users_path)}
+          it {should have_link('List orders', href: orders_path)}
                                                               #####
           it {should have_link('Profile', href: user_path(user))}
           it {should have_link('Edit profile', href: edit_user_path(user))}
-          it { should have_link('Log out',    href: logout_path) }
+          it {should have_link('Log out',    href: logout_path) }
           it {should have_link('Cart', href: cart_path(user))}
-          it { should_not have_link('Sign IN', href: signin_path) }
+          it {should_not have_link('Sign IN', href: signin_path) }
 
 
         describe "edit" do
