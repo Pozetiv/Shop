@@ -1,24 +1,15 @@
 class User < ApplicationRecord
-	before_save :admin_rules
-	has_many :orders
+  before_create :rules_admin
+  has_many :orders
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable,  :validatable
 
-	before_save {self.email = email.downcase}
-	
-	has_secure_password
+  private
 
-	#validates
-	validates :name, presence: true, length: { minimum: 3}
-	validates :email, presence: true, length: { maximum: 100}, uniqueness: { case_sensitive: false}
-	validates :password, presence: true, length: { minimum: 4}, allow_nil: true
+  def rules_admin
+    self.admin=User.count==0
+  end
 
-	def User.digest(string)
-		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-							 																		BCrypt::Engine.cost
-		BCrypt::Password.create(string, cost: cost)
-	end
-
-
-	def admin_rules
-		self.admin = User.count == 0
-		end
 end
