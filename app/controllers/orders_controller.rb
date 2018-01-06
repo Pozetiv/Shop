@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :admin, only: [:index]
+  before_action :admin, only: [:index, :today_orders]
 
   def index
     @orderss= Order.where(status: 'In_order')
@@ -27,6 +27,10 @@ class OrdersController < ApplicationController
     @status=current_order.update_attributes(status: params[:status])
     redirect_to order_path(current_user)
     session.delete(:order_id)
+  end
+
+  def today_orders
+   @today = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(status: 'In_order')
   end
 
   private

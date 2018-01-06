@@ -1,0 +1,23 @@
+<h2 class="text-center">Today orders</h2>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Dates about client (name, email)</th>
+    <th>Items name -> price $</th>
+    <th>Total price order</th>
+  </tr>
+  </thead>
+  <tbody>
+<%@today.each do |today| %>
+  <tr>
+      <td><%= today.user.username %> -> email <%=today.user.email%></td>
+      <td> <% today.order_items.each do |ord_itms| %>
+            <li><%=ord_itms.product.title%> -> <%= ord_itms.fixprice %>$</li>
+            <% end %>
+      </td>
+      <td> <%= today.total_price %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>

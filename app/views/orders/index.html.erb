@@ -1,7 +1,7 @@
 <h2>List of orders</h2>
 <%= will_paginate @orders %>
 <% @orders.each do |item| %>
-Order -> <%= item.user.name %>,
+Order -> <%= item.user.username %>,
  created   <%=item.updated_at.to_date.strftime("%d %B, %Y") %>
        <% item.products.each do |products| %>
             <li><%=products.title%></li>
