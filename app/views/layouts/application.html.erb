@@ -59,8 +59,7 @@
 
 <div class="container-fluid">
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
 <% flash.each do |msg_type, msg| %>
       <div class="alert alert-<%=msg_type %>"><%= msg %></div>
       <% end %>
