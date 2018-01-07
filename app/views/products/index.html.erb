@@ -1,15 +1,15 @@
 <% provide(:title, "Main page") %>
-
+<div class="text-center">
 <%if user_signed_in? %>
     <h2 class="text-center">You can buy only one item frome category</h2>
     <% end %>
 
 <%@categories.each do |categories| %>
-    <div class="text-center"><h2><%=categories.name if categories.products.any?%> </h2></div>
+    <h2><%=categories.name if categories.products.any?%> </h2>
     <div class="col-md-12">
     <%categories.products.each do |product|%>
         <div class="col-md-4 ">
-          <%=image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?  %></br>
+          <%=link_to (image_tag product.image.url(:thumb), class: 'img-thumbnail thumb ' if product.image?), product_path(product)  %></br>
 
           <%= link_to product.title, product_path(product)%> | <%= number_to_currency product.price%>
           <% if user_signed_in? %>
@@ -21,9 +21,10 @@
                   <% end %>
           <%else %>
               </br>
-              <%= link_to "If your wan't buy, you must sign in ",  new_user_session_path , class: "btn btn-info" %>
+              <%= link_to "If your wan't buy, you must sign in",  new_user_session_path , class: "btn btn-info" %>
           <% end %>
         </div>
         <% end %>
     </div>
 <% end%>
+</div>

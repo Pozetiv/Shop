@@ -33,6 +33,11 @@ class OrdersController < ApplicationController
    @today = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(status: 'In_order')
   end
 
+  def today_json
+    @today = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(status: 'In_order')
+    render json: @today, status: :ok
+  end
+
   private
   def order_params
     params.require(:order).permit(:product_id, :quantity, :status)
