@@ -1,5 +1,5 @@
 class OrderItemSerializer < ActiveModel::Serializer
-  attributes  :product, :quantity
+  attributes  :quantity, :fixprice
   belongs_to :order
   belongs_to :product
 end
