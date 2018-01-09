@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery  with:  :null_session
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :success, :info, :danger
+  include Authenticable
 
   helper_method :current_order
   helper_method :logged_in?
@@ -20,10 +22,6 @@ class ApplicationController < ActionController::Base
       flash[:danger] = 'Your cant do this, because your are not admin'
     end
   end
-
-    def logged_in?
-      !current_user.nil?
-    end
 
 
   protected

@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all
-    @order_item = current_order.order_items.new if logged_in?
+    @order_item = current_order.order_items.new if user_signed_in?
     
   end
 
