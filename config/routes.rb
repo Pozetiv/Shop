@@ -15,11 +15,10 @@ Rails.application.routes.draw do
   resources :users
 
 
-  namespace :api, defaults: { format: :json },
-            constraints: { subdomain: 'api' }, path: '/'  do
-    scope module: :v1 do
+  namespace 'api', defaults: { format: :json } do
+    namespace 'v1' do
+      resources :orders, only: [:index]
       resources :sessions, only: [:create, :destroy]
-      get 'orders', to: 'orders#orders'
     end
   end
 
