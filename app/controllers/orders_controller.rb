@@ -31,12 +31,12 @@ class OrdersController < ApplicationController
 
   def today_orders
    @today = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(status: 'In_order')
+   respond_to do |format|
+     format.html
+     format.json {render json: @today, status: 200}
+   end
   end
 
-  def today_json
-    @today = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(status: 'In_order')
-    render json: @today, status: :ok
-  end
 
   private
   def order_params

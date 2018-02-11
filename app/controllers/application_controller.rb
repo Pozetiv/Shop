@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery  with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery  with: :exception
+  acts_as_token_authentication_handler_for User
   add_flash_types :success, :info, :danger
-  include Authenticable
+
 
   helper_method :current_order
   helper_method :logged_in?

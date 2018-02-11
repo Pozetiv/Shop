@@ -1,5 +1,5 @@
 class Api::V1::OrdersController < ApplicationController
-  before_action :authenticate_with_token!, only: [:index]
+  before_action :authenticate_user!, only: [:index]
   respond_to :json
 
 
