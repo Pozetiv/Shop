@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  acts_as_token_authentication_handler_for User
   before_action :admin, only: [:index, :today_orders]
 
   def index

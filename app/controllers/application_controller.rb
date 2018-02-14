@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery  with: :exception
-  acts_as_token_authentication_handler_for User
   add_flash_types :success, :info, :danger
 
 

@@ -2,8 +2,11 @@
 
 <h2>Welcome to your profile page <%= @user.username %></h2>
 Your email is -> <%= @user.email %>
+</br>
 
 
-<%if signed_in_user.admin? %>
-
-<%=current_user.token %>
+<%if user_signed_in? %>
+    <% if current_user.admin%>
+        Your secret authorizathion token -<samp> <%= current_user.authentication_token %> </samp>
+    <% end %>
+<% end %>
