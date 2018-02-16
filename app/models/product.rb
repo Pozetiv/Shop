@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+ after_create :default_image
   mount_uploader :image, ImageUploader
   #relationship
 	has_many :order_items
@@ -10,7 +11,8 @@ class Product < ApplicationRecord
 	
 	
 def default_image
-	if self.image == nil
-			
+	if self.image == nil	
+		self.image = ''		
+end
 end
 end
