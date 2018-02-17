@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
     describe "CHECK- Create new products" do
-      let (:userad) {User.create(name: "admin", email: "adminrs@admin.com", password: "admin1234", admin: true)}
+      let (:userad) {User.create(username: "admin", email: "adminrs@admin.com", password: "admin1234", admin: true)}
       let(:cat) {Category.create(name:"First")}
       before do
-        visit signin_path
+        visit new_user_session_path
         fill_in "Email", with: userad.email
         fill_in "Password", with: userad.password
-        click_button "Log IN"
+        click_button "Log in"
      end
       subject {page}
       it{should have_link('Creat new item', href: new_product_path)}

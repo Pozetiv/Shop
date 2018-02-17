@@ -24,9 +24,9 @@ RSpec.describe "MainStyles", type: :feature do
       end
 
         #redirect to SIGN_UP
-      before {visit signup_path }
+      before {visit  new_user_registration_path }
       it {should have_title('Registration page')}
-      it {should have_content('Name')}
+      it {should have_content('Username')}
       it {should have_content('Email')}
       it {should have_content('Password')}
 

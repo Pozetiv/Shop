@@ -10,9 +10,5 @@ class Product < ApplicationRecord
   validates :title, :description, :price, :category, presence: true
 	
 	
-def default_image
-	if self.image == nil	
-		self.image = ''		
-end
-end
+
 end

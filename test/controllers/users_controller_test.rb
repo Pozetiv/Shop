@@ -18,7 +18,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #end
    #check existence pages
   test "sign_up page" do
-    get signup_path
+    get new_user_registration_path
     assert_response :success
   end
 
