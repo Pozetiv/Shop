@@ -10,15 +10,15 @@
   </tr>
   </thead>
   <tbody>
-<%@today.each do |today| %>
-  <tr>
-      <td><%= today.user.username %> -> email <%=today.user.email%></td>
-      <td> <% today.order_items.each do |ord_itms| %>
-            <li><%=ord_itms.product.title%> -> <%= ord_itms.fixprice %>$ x <%= ord_itms.quantity %></li>
-            <% end %>
-      </td>
-      <td> <%= today.total_price %></td>
-  </tr>
-<% end %>
+  <%@today.each do |today| %>
+      <tr>
+        <td><%= today.user.username %> -> email <%=today.user.email%></td>
+        <td> <% today.order_items.each do |ord_itms| %>
+              <li><%=ord_itms.product.title%> -> <%= ord_itms.fixprice %>$ x <%= ord_itms.quantity %></li>
+          <% end %>
+        </td>
+        <td> <%= today.total_price %></td>
+      </tr>
+  <% end %>
   </tbody>
 </table>

@@ -4,7 +4,7 @@ RSpec.describe "Users", type: :request do
 
   describe "SIGN up page" do
 
-     before {visit new_user_registration_path}
+    before {visit new_user_registration_path}
 
     describe "invalide date" do
       it "should dont create new user" do
@@ -38,14 +38,14 @@ RSpec.describe "Users", type: :request do
       it {should have_content(user.email)}
     end
 
-  describe "SIGN IN" do
-    before {visit  new_user_session_path}
-    subject {page}
+    describe "SIGN IN" do
+      before {visit  new_user_session_path}
+      subject {page}
 
-    describe "invalide dates" do
-    before {click_button "Log in"}
-    it{should have_selector('div.alert.alert')}
-    end
+      describe "invalide dates" do
+        before {click_button "Log in"}
+        it{should have_selector('div.alert.alert')}
+      end
 
       describe "valide dates user" do
         let (:user) {FactoryGirl.create(:user)}
@@ -55,16 +55,16 @@ RSpec.describe "Users", type: :request do
           click_button "Log in"
         end
         ## ADMIN PANEL
-          it {should have_link('Creat new item', href: new_product_path)}
-          it {should have_link('List users', href: users_path)}
-          it {should have_link('List orders', href: orders_path)}
-          it {should have_link('Todays orders', href:  today_orders_path )}
-                                                              #####
-          it {should have_link('Profile', href: user_path(user))}
-          it {should have_link('Edit profile', href: edit_user_registration_path(user))}
-          it {should have_link('Log out',    href: destroy_user_session_path) }
-          it {should have_link('Cart', href: cart_path(user))}
-          it {should_not have_link('Sign IN', href:  new_user_session_path) }
+        it {should have_link('Creat new item', href: new_product_path)}
+        it {should have_link('List users', href: users_path)}
+        it {should have_link('List orders', href: orders_path)}
+        it {should have_link('Todays orders', href:  today_orders_path )}
+        #####
+        it {should have_link('Profile', href: user_path(user))}
+        it {should have_link('Edit profile', href: edit_user_registration_path(user))}
+        it {should have_link('Log out',    href: destroy_user_session_path) }
+        it {should have_link('Cart', href: cart_path(user))}
+        it {should_not have_link('Sign IN', href:  new_user_session_path) }
 
 
         describe "edit" do
@@ -75,24 +75,22 @@ RSpec.describe "Users", type: :request do
           it {should have_content("Email")}
           it {should have_content("Password")}
           it {should have_content("Current password")}
-          end
+        end
 
-         describe "function log out" do
+        describe "function log out" do
           before { click_link "Log out" }
           it { should have_link('Sign IN') }
-           it {should have_title('Main page')}
-         end
+          it {should have_title('Main page')}
+        end
 
       end
 
-  end
+    end
 
   end
 
 
 
 end
-
-
 
 

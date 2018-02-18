@@ -18,12 +18,12 @@ RSpec.describe "MainStyles", type: :feature do
     describe "sign up page" do
 
       it "ckeck to link on main page" do
-      visit root_path
-      expect(page).to have_content('Sign UP')
-      click_link "Sign UP"
+        visit root_path
+        expect(page).to have_content('Sign UP')
+        click_link "Sign UP"
       end
 
-        #redirect to SIGN_UP
+      #redirect to SIGN_UP
       before {visit  new_user_registration_path }
       it {should have_title('Registration page')}
       it {should have_content('Username')}
@@ -41,5 +41,4 @@ RSpec.describe "MainStyles", type: :feature do
 
 
   end
-   end
-
+end

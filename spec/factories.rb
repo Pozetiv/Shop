@@ -6,13 +6,12 @@ FactoryGirl.define do
     admin true
   end
 
- factory :tester, class: User do
-   username "tester"
-   email "testr@test.com"
-   password "test1234"
-   admin false
- end
-
+  factory :tester, class: User do
+    username "tester"
+    email "testr@test.com"
+    password "test1234"
+    admin false
+  end
 
 
 end

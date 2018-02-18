@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :user
 	has_many :order_items
-
+	has_many :products, through: :order_items
 	before_save :update_total
 	before_save :up_status
 

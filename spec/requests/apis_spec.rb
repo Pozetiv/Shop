@@ -6,23 +6,23 @@ RSpec.describe "Api", type: :request do
 
 
     describe "Must show page" do
-    subject {page}
-    before {visit new_user_session_path}
-    let (:user) {FactoryGirl.create(:user)}
-    before do
-      fill_in "Email", with: user.email
-      fill_in "Password", with: user.password
-      click_button "Log in"
-    end
+      subject {page}
+      before {visit new_user_session_path}
+      let (:user) {FactoryGirl.create(:user)}
+      before do
+        fill_in "Email", with: user.email
+        fill_in "Password", with: user.password
+        click_button "Log in"
+      end
 
-    describe "today_orders for admin" do
-      before {visit today_orders_path}
-      it {should have_title("Today orders")}
-      it {should have_content("Today orders")}
-      it {should have_content("Dates about client (name, email)")}
-      it {should have_content("Items name -> price $ x quantity")}
-      it {should have_content("Total price order")}
-    end
+      describe "today_orders for admin" do
+        before {visit today_orders_path}
+        it {should have_title("Today orders")}
+        it {should have_content("Today orders")}
+        it {should have_content("Dates about client (name, email)")}
+        it {should have_content("Items name -> price $ x quantity")}
+        it {should have_content("Total price order")}
+      end
     end
 
     describe "don't must show page" do

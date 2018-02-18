@@ -7,7 +7,5 @@ class Product < ApplicationRecord
 
   #validates
   validates :title, :description, :price, :category, presence: true
-	
-	
 
 end
