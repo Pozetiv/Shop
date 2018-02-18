@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
- after_create :default_image
   mount_uploader :image, ImageUploader
   #relationship
 	has_many :order_items

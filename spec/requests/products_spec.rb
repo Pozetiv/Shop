@@ -16,7 +16,6 @@ RSpec.describe "Products", type: :request do
       it "dont create new item" do
         visit new_product_path
         fill_in "Title", with: "Soup"
-        fill_in "Description", with: "Soup with"
         fill_in "Price", with: "2"
  ##Need select category for product
       expect do

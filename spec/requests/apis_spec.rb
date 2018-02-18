@@ -32,21 +32,24 @@ RSpec.describe "Api", type: :request do
 
       describe "log in not admin" do
         before {visit new_user_session_path}
-        let (:user1) {FactoryGirl.create(:tester)}
+        let (:tester) {FactoryGirl.create(:tester)}
         before do
-          fill_in "Email", with: user1.email
-          fill_in "Password", with: user1.password
+          fill_in "Email", with: tester.email
+          fill_in "Password", with: tester.password
           click_button "Log in"
         end
         before {visit today_orders_path}
-        it {should have_contnet('')}
-
+        #it {should have_selector('div.alert.danger')}
+        #it {should have_content('Your cant do this, because your are not admin')}
       end
-
-
 
     end
 
-
+    describe "json" do
+      it "not authenticat admin" do
+        get '/today_orders.json'
+        expect(response).to have_http_status 401
+      end
+    end
   end
 end
